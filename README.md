@@ -69,15 +69,15 @@ Creating a new project in Eclipse
 ----------------------------------
 
 * Import project URI by `Import ... > Projects from Git > Clone URI`
-* Paste https://github.com/infozenlab/fdademo.git into 'URI'
-* Select 'master' branch
-* Confirm directory and remote name 'origin'
+* Paste https://github.com/infozenlab/fdademo.git into `URI`
+* Select `master` branch
+* Confirm directory and remote name `origin`
 * Import as general project
-* Leave the default 'fdademo' as project name
+* Leave the default `fdademo` as project name
 * Click Finish
 
-* Right-Click on project and 'Configure -> 'Convert to Maven Project'
-* Right-Click on project 'Run as' -> 'Run on Server,' follow wizard till server is up and running
+* Right-Click on project and `Configure > Convert to Maven Project`
+* Right-Click on project `Run as > Run on Server` follow wizard till server is up and running
 
 Test on the browser
 -------------------
