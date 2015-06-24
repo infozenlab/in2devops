@@ -85,6 +85,3 @@ Test on the browser
 	http://localhost:8080/fdademo
 
 Note: No additional services are required in order to start the application. No DB configuration is required.
-
-
-If you have any troubles with installation in Eclipse, you may want to have a look at this issue: #74
