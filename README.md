@@ -1,7 +1,5 @@
-# fdademo
-InfoZen FDA Open Data Demo
-Spring MVC, Bootstrap Quickstart Maven Setup
-=========================================
+FDA Open Data Spring MVC, Bootstrap Application Setup
+=====================================================
 
 Summary
 -------
