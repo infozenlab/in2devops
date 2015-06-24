@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Login into MedEvent Application</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="../../../resources/css/main.css" rel="stylesheet" media="screen" th:href="@{/resources/css/main.css}" />
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="../../../resources/js/jquery-1.11.1.min.js"
+	th:src="@{/resources/js/jquery-1.11.1.min.js}"></script>
+<script src="../../../resources/js/bootstrap.min.js"
+	th:src="@{/resources/js/bootstrap.min.js}"></script>
+</head>
+<style>
+.custom-inline {
+	display: inline-block
+}
+</style>
+<body>
+	<div th:replace="fragments/header :: header">Header</div>
+	<div class="container">
+		<div class="row" style="text-align: center; padding-top: 100px">
+			<div class="jumbotron" style="text-align: center; padding-top: 50px">
+				<div class="panel panel-default">
+					<div class="panel-heading" style="height: 120px;">
+						<img width="100%" height="100%"
+							th:src="@{/resources/images/banner.png}" />
+					</div>
+					<div class="panel-body" style="text-align: left;">
+						<p th:text="#{intro.message}"></p>
+						<p></p>
+						<div class="row">
+							<div class="col-md-9 col-md-offset-2">
+								<div
+									class="col-md-4 btn 
+								    btn-primary 
+								    btn-md
+								    pull-left"
+									role="button">
+									<a th:href="@{https://github.com/infozenlab/fdademo.git}"
+										th:text="#{contactus.message}"
+										style="color: white; text-decoration: none;"> </a>
+								</div>
+								<div class="col-md-1"></div>
+								<div
+									class="col-md-2 btn 
+								    btn-primary 
+								    btn-md"
+									role="button">
+									<a th:href="@{http://www.infozen.com/}"
+										th:text="#{learnmoreaboutus.message}"
+										style="color: white; text-decoration: none;"> </a>
+								</div>
+								<div class="col-md-1"></div>
+								<div
+									class="col-md-2 btn 
+								    btn-primary 
+								    btn-md
+								    pull-left"
+									role="button">
+									<a th:href="@{/signin}"
+										th:text="#{tryourapp.message}"
+										style="color: white; text-decoration: none;"> </a>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<div th:replace="fragments/footer :: footer">&copy; 2013 The
+			Static Templates</div>
+	</div>
+</body>
+</html>
