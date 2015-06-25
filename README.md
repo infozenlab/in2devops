@@ -101,7 +101,7 @@ Running Selenium Test on Mozilla Firefox
 750 Word Brief Narrative
 ========================
 
-InfoZen leveraged its Agile methods and DevOps principles that have been honed at DHS and NASA. InfoZen’s CEO assigned Jeff Highman as the leader/delivery manager who’s accountable for the delivery of the solution, process, and the product within <a href="https://playbook.cio.gov/#play6">one week</a>.  Jeff assembled a multidisciplinary team including a technical architect, front-end developer, DevOps engineer, and Agile coach. A lean plan was formed to align to the U.S Digital Services Playbook – these correlations are noted throughout this narrative with “Play #” citations.
+InfoZen leveraged its Agile methods and DevOps principles that have been honed at DHS and NASA. InfoZen’s CEO assigned Jeff Highman as the leader/delivery manager who’s accountable for the delivery of the solution, process, and the product within one week<b><sup>1</sup></b>.  Jeff assembled a multidisciplinary team including a technical architect, front-end developer, DevOps engineer, and Agile coach. A lean plan was formed to align to the U.S Digital Services Playbook – these correlations are noted throughout this narrative with “Play #” citations.
 
 We set out to support the business hypothesis: <b>users will see trends when the openFDA data is aggregated and visualized effectively</b>.  
 
