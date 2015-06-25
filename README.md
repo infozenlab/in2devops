@@ -91,7 +91,7 @@ Test on the browser
 
 Note: No additional services are required in order to start the application. No DB configuration is required.
 
-Running Selelium Test on Mozilla Firefox
+Running Selenium Test on Mozilla Firefox
 ----------------------------------------
 ```bash
     cd fdademo
