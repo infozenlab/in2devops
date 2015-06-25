@@ -8,7 +8,7 @@ Open FDA - Spring MVC, Bootstrap Prototype Application Setup
 
 Summary
 -------
-The project is a web application visualizing Open FDA Data as per required by Open FDA Challenge.
+The project is a web application visualizing openFDA Data as per required by GSA 18F Agile Delivery Services RFQ.
 
 Generated project characteristics
 ---------------------------------
