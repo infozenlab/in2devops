@@ -118,7 +118,7 @@ The team held a retrospective on the last day of the sprint.  The velocity of th
 <b><sup>1</sup></b><href>https://playbook.cio.gov/#play6</href>
 <b><sup>2</sup></b><href>https://playbook.cio.gov/#play1</href>
 <b><sup>3</sup></b><href>https://playbook.cio.gov/#play2</href>
-<b><sup>4</sup</b>><href>https://playbook.cio.gov/#play3</href>
+<b><sup>4</sup></b>><href>https://playbook.cio.gov/#play3</href>
 <b><sup>5</sup></b><href>https://playbook.cio.gov/#play4</href>
 <b><sup>6</sup></b><href>https://playbook.cio.gov/#play5</href>
 <b><sup>7</sup></b><href>https://playbook.cio.gov/#play7</href>
