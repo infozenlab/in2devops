@@ -114,3 +114,16 @@ The functionality was tested with several layers that included unit testing with
 The application architecture was conceived to support the hypothesis that users could see trends if the data was aggregated and visualized.  The service layer encapsulated the aggregation so this function could be embedded into other applications.  The Spring framework provided a Model View Controller that allowed the application to be extended for advanced security, persistence, or caching should these needs arise.  The UI Layer adopted a similar library to the openFDA architecture to allow these solutions to easily merge for a broader solution.  The team extended the USPTO style guide, based on Bootstrap and JQuery, to provide a type-ahead feature so input criteria was easier for the user. In addition, 18F could now engage another agency by beginning with reuse.
 
 The team held a retrospective on the last day of the sprint.  The velocity of the team was generally within the planned capacity and quality.  The team concluded that this data set could be further enriched for many variations of the business hypothesis.
+
+<sup>1</sup><href>https://playbook.cio.gov/#play1</href>
+<sup>2</sup><href>https://playbook.cio.gov/#play2</href>
+<sup>3</sup><href>https://playbook.cio.gov/#play3</href>
+<sup>4</sup><href>https://playbook.cio.gov/#play4</href>
+<sup>5</sup><href>https://playbook.cio.gov/#play5</href>
+<sup>6</sup><href>https://playbook.cio.gov/#play6</href>
+<sup>7</sup><href>https://playbook.cio.gov/#play7</href>
+<sup>8</sup><href>https://playbook.cio.gov/#play8</href>
+<sup>9</sup><href>https://playbook.cio.gov/#play9</href>
+<sup>10</sup><href>https://playbook.cio.gov/#play10</href>
+<sup>11</sup><href>https://playbook.cio.gov/#play11</href>
+<sup>12</sup><href>https://playbook.cio.gov/#play12</href>
