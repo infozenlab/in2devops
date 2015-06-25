@@ -115,15 +115,15 @@ The application architecture was conceived to support the hypothesis that users 
 
 The team held a retrospective on the last day of the sprint.  The velocity of the team was generally within the planned capacity and quality.  The team concluded that this data set could be further enriched for many variations of the business hypothesis.
 
-<sup>1</sup><href>https://playbook.cio.gov/#play1</href>
-<sup>2</sup><href>https://playbook.cio.gov/#play2</href>
-<sup>3</sup><href>https://playbook.cio.gov/#play3</href>
-<sup>4</sup><href>https://playbook.cio.gov/#play4</href>
-<sup>5</sup><href>https://playbook.cio.gov/#play5</href>
-<sup>6</sup><href>https://playbook.cio.gov/#play6</href>
+<sup>1</sup><href>https://playbook.cio.gov/#play6</href>
+<sup>2</sup><href>https://playbook.cio.gov/#play1</href>
+<sup>3</sup><href>https://playbook.cio.gov/#play2</href>
+<sup>4</sup><href>https://playbook.cio.gov/#play3</href>
+<sup>5</sup><href>https://playbook.cio.gov/#play4</href>
+<sup>6</sup><href>https://playbook.cio.gov/#play5</href>
 <sup>7</sup><href>https://playbook.cio.gov/#play7</href>
-<sup>8</sup><href>https://playbook.cio.gov/#play8</href>
-<sup>9</sup><href>https://playbook.cio.gov/#play9</href>
-<sup>10</sup><href>https://playbook.cio.gov/#play10</href>
-<sup>11</sup><href>https://playbook.cio.gov/#play11</href>
+<sup>8</sup><href>https://playbook.cio.gov/#play13</href>
+<sup>9</sup><href>https://playbook.cio.gov/#play8</href>
+<sup>10</sup><href>https://playbook.cio.gov/#play9</href>
+<sup>11</sup><href>https://playbook.cio.gov/#play10</href>
 <sup>12</sup><href>https://playbook.cio.gov/#play12</href>
