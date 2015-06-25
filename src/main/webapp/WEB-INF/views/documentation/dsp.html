@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title th:text="#{view.index.title}">Welcome!</title>
+<link href="../../../resources/css/usptostrap.min.css" rel="stylesheet"
+	media="screen" th:href="@{/resources/css/usptostrap.min.css}" />
+<link href="../../../resources/css/main.css" rel="stylesheet"
+	media="screen" th:href="@{/resources/css/main.css}" />
+<link href="../../../resources/css/jquery-ui.min.css" rel="stylesheet"
+	media="screen" th:href="@{/resources/css/jquery-ui.min.css}" />
+<script src="../../../resources/js/bootstrap.min.js"
+	th:src="@{/resources/js/bootstrap.min.js}"></script>
+<script src="../../../resources/js/jquery-1.11.1.min.js"
+	th:src="@{/resources/js/jquery-1.11.1.min.js}"></script>
+<script src="../../../resources/js/jquery-ui.min.js"
+	th:src="@{/resources/js/jquery-ui.min.js}"></script>
+<script src="../../../resources/js/d3.v3.min.js"
+	th:src="@{/resources/js/d3.v3.min.js}"></script>
+</head>
+<style>
+<!-- /* Font Definitions */
+@font-face {
+	font-family: "Cambria Math";
+	panose-1: 2 4 5 3 5 4 6 3 2 4;
+}
+
+@font-face {
+	font-family: Calibri;
+	panose-1: 2 15 5 2 2 2 4 3 2 4;
+}
+/* Style Definitions */
+p.MsoNormal,li.MsoNormal,div.MsoNormal {
+	margin-top: 0in;
+	margin-right: 0in;
+	margin-bottom: 10.0pt;
+	margin-left: 0in;
+	line-height: 115%;
+	font-size: 11.0pt;
+	font-family: "Calibri", "sans-serif";
+}
+
+.MsoChpDefault {
+	font-family: "Calibri", "sans-serif";
+}
+
+.MsoPapDefault {
+	margin-bottom: 10.0pt;
+	line-height: 115%;
+}
+
+@page WordSection1 {
+	size: 8.5in 11.0in;
+	margin: 1.0in 1.0in 1.0in 1.0in;
+}
+
+div.WordSection1 {
+	page: WordSection1;
+}
+
+--> /* body{ */
+/*     width:1100px; */
+/*     margin:50px auto; */
+/* } */
+.pl-content {
+	padding-left: 20px;
+}
+
+path {
+	stroke: #fff;
+}
+
+path:hover {
+	opacity: 0.9;
+}
+
+rect:hover {
+	fill: blue;
+}
+
+.axis {
+	font: 10px sans-serif;
+}
+
+.legend tr {
+	border-bottom: 1px solid grey;
+}
+
+.legend tr:first-child {
+	border-top: 1px solid grey;
+}
+
+.axis path,.axis line {
+	fill: none;
+	stroke: #000;
+	shape-rendering: crispEdges;
+}
+
+.x.axis path {
+	display: none;
+}
+
+.legend {
+	margin-bottom: 76px;
+	display: inline-block;
+	border-collapse: collapse;
+	border-spacing: 0px;
+}
+
+.legend,td {
+	padding: 4px 5px;
+	vertical-align: bottom;
+}
+
+.legendFreq,.legendPerc {
+	align: right;
+	width: 50px;
+}
+</style>
+<body>
+	<div th:replace="fragments/header :: header">&nbsp;</div>
+	<div class="pl-container">
+		<div th:replace="fragments/sideMenu :: sideMenu">&nbsp;</div>
+		<div class="pl-content">
+			<div class="panel" style="padding-left: 50px">
+				<table border="1" cellpadding="0" cellspacing="0" width="632"
+					style="padding-left: 20px">
+					<tbody>
+						<tr>
+							<td valign="top" width="37">
+								<p align="center">
+									<strong> </strong>
+								</p>
+							</td>
+							<td valign="top" width="247">
+								<p align="center">
+									<strong>FDA Requirement</strong>
+								</p>
+							</td>
+							<td nowrap="" width="348">
+								<p align="center">
+									<strong>Response</strong>
+								</p>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top" width="37">
+								<p>1</p>
+							</td>
+							<td valign="top" width="247">
+								<p>assigned one leader, gave that person authority and
+									responsibility, and held that person accountable for the
+									quality of the prototype submitted</p>
+							</td>
+							<td nowrap="" width="348">
+								<p>Jeff Highman was assigned as a leader by the Company CEO
+									to be accountable for the end to end delivery of the solution,
+									process, and delivery of the product within one week. Results
+									of the development were reported to the CEO, the day prior to
+									delivery.</p>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top" width="37">
+								<p>2</p>
+							</td>
+							<td valign="top" width="247">
+								<p>assembled a multidisciplinary and collaborative team
+									including a minimum of 5 labor categories from the Development
+									Pool labor categories to design and develop the prototype</p>
+							</td>
+							<td valign="top" width="348">
+								<p>
+									Assembled a Core team of 5, including Technical Architect,
+									DevOps, Agile coach, Front End Developer, and &#8230; <br /> <br />
+								</p>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top" width="37">
+								<p>3</p>
+							</td>
+							<td valign="top" width="247">
+								<p>understand what people need, by including people in the
+									prototype development and design process</p>
+							</td>
+							<td valign="top" width="348">
+								<p>Assembled part time secondary stakeholders from within
+									the office that included interns, executives, and other users.</p>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top" width="37">
+								<p>4</p>
+							</td>
+							<td valign="top" width="247">
+								<p>used at least three "human-centered design" techniques or
+									tools</p>
+							</td>
+							<td valign="top" width="348">
+								<p>Developed Personas to represent consumers of the
+									application, stakeholders that were interested in the process
+									and engineers that were interested in the technology.
+									Determined a business hypothesis around the data set, that an
+									application could help a user identify trends by visualizing an
+									aggregated view of the data set. Developed wireframes and user
+									navigation map</p>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top" width="37">
+								<p>5</p>
+							</td>
+							<td valign="top" width="247">
+								<p>created or used a design style guide and/or a pattern
+									library</p>
+							</td>
+							<td valign="top" width="348">
+								<p>A style guide was developed to enable responsive
+									controls. We utilized a style guide that was published by a
+									federal agency (USPTO Design Patterns:
+									https://uspto.github.io/designpatterns/). This was extended to
+									support key features such as type-ahead dropdown.</p>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top" width="37">
+								<p>6</p>
+							</td>
+							<td valign="top" width="247">
+								<p>performed usability tests with people</p>
+							</td>
+							<td valign="top" width="348">
+								<p>Held a focus group to provide feedback on the
+									application. The first iteration was shipped as a minimum
+									viable product on the third day.</p>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top" width="37">
+								<p>7</p>
+							</td>
+							<td valign="top" width="247">
+								<p>used an iterative approach, where feedback informed
+									subsequent work or versions of the prototype</p>
+							</td>
+							<td valign="top" width="348">
+								<p>Feedback was collected that guided revisions to the
+									layout, navigation, and function. Adjustments were made to the
+									back end to accommodate aggregation constraints. Changes were
+									continuously integrated, deployed on a production system, and
+									tested with a layered approach.</p>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top" width="37">
+								<p>8</p>
+							</td>
+							<td valign="top" width="247">
+								<p>created a prototype that works on multiple devices, and
+									presents a responsive design</p>
+							</td>
+							<td valign="top" width="348">
+								<p>The responsiveness of the application was tested, and
+									confirmed on mobile devices including tablet and phone. A
+									collapsible navigation bar and a dynamic content pane were used
+									to maximize real estate on each device.</p>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top" width="37">
+								<p>9</p>
+							</td>
+							<td valign="top" width="247">
+								<p>used at least five modern and open-source technologies,
+									regardless of architectural layer (frontend, backend, etc.)</p>
+							</td>
+							<td valign="top" width="348">
+								<p>Spring (MVC &amp; Security), D3.JS, JQuery, Bootstrap,
+									AspectJ, Jackson, SLF4J, Maven, Jenkins, Vagrant</p>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top" width="37">
+								<p>10</p>
+							</td>
+							<td valign="top" width="247">
+								<p>deployed the prototype on an Infrastructure as a Service
+									(IaaS) or Platform as a Service (PaaS) provider, and indicated
+									which provider they used</p>
+							</td>
+							<td valign="top" width="348">
+								<p>Deployed on VMware V-Sphere and AWS.</p>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top" width="37">
+								<p>11</p>
+							</td>
+							<td valign="top" width="247">
+								<p>wrote unit tests for their code</p>
+							</td>
+							<td valign="top" width="348">
+								<p>Wrote unit tests with Junit. Used Mockito to isolate
+									components. Used Selenium to create a UI smoke test.</p>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top" width="37">
+								<p>12</p>
+							</td>
+							<td valign="top" width="247">
+								<p>set up or used a continuous integration system to
+									automate the running of tests and continuously deployed their
+									code to their IaaS or PaaS provider</p>
+							</td>
+							<td valign="top" width="348">
+								<p>Created a CI pipeline that leveraged Maven, Jenkins,
+									Sonar Cube, and Vagrant for continuous integration. Tests were
+									performed with each check-in. Code quality reports were
+									produced with each build. The tomcat container was
+									automatically built with Vagrant.</p>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top" width="37">
+								<p>13</p>
+							</td>
+							<td valign="top" width="247">
+								<p>set up or used configuration management</p>
+							</td>
+							<td valign="top" width="348">
+								<p>Configuration items were tracked with Git and Nexus
+									Library manager.</p>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top" width="37">
+								<p>14</p>
+							</td>
+							<td valign="top" width="247">
+								<p>set up or used continuous monitoring</p>
+							</td>
+							<td valign="top" width="348">
+								<p>Used Ratproxy to scan the application, identified and
+									corrected vulnerabilities.</p>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top" width="37">
+								<p>15</p>
+							</td>
+							<td valign="top" width="247">
+								<p>deploy their software in a container (i.e., utilized
+									operating-system-level virtualization)</p>
+							</td>
+							<td valign="top" width="348">
+								<p>Applicant was deployed onto a Vagrant box spawned using
+									Jenkins and ruby script.</p>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top" width="37">
+								<p>16</p>
+							</td>
+							<td valign="top" width="247">
+								<p>make use of a API, by either consuming or providing one
+									RESTfully.</p>
+							</td>
+							<td valign="top" width="348">
+								<p>Consumed the FDA-Open API to aggregate data over
+									successive calls using RESTful client. Processed results with
+									Jackson. Provided a Restful service to enable the aggregation
+									to be consumed.</p>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top" width="37">
+								<p>17</p>
+							</td>
+							<td valign="top" width="247">
+								<p>used an iterative approach, where feedback informed
+									subsequent work or versions of the prototype</p>
+							</td>
+							<td valign="top" width="348">
+								<p>Conducted daily feedback sessions that were used to
+									refine the form, flow, and function of the application.</p>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top" width="37"></td>
+							<td valign="top" width="247">
+								<p>provided sufficient documentation to install and run
+									their prototype on another machine</p>
+							</td>
+							<td valign="top" width="348">
+								<p>Provided documentation in Readme file to install the
+									application on another machine. Provided instructions for
+									windows and Linux.</p>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top" width="37">
+								<p>18</p>
+							</td>
+							<td valign="top" width="247">
+								<p>prototype and underlying platforms used to create and run
+									the prototype are openly licensed and free of charge</p>
+							</td>
+							<td valign="top" width="348">
+								<p>The underlying platform was tested on CentOS which is
+									openly licensed. Verified all libraries, including transitive
+									dependencies, were openly licensed. Every technology used in
+									the application, CI pipeline, and DevOps platform was open
+									source.</p>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

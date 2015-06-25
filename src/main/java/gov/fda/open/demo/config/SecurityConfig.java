@@ -29,110 +29,107 @@ import org.springframework.security.web.util.matcher.RequestMatcher;
 /**
  * Spring SecurityConfig for the application.
  * 
- * <p><b>Note:</b> Currently configured to use in memory users</p>
+ * <p>
+ * <b>Note:</b> Currently configured to use in memory users
+ * </p>
  * 
  */
 @Configuration
 @EnableWebSecurity
 class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-	/**
-	 * Override this method to configure {@link WebSecurity}. For
-	 * example, if you wish to ignore certain requests.
-	 *
-	 * @param web the web
-	 * @throws Exception the exception
-	 */
-	@Override
+    /**
+     * Override this method to configure {@link WebSecurity}. For example, if
+     * you wish to ignore certain requests.
+     *
+     * @param web
+     *            the web
+     * @throws Exception
+     *             the exception
+     */
+    @Override
     public void configure(WebSecurity web) throws Exception {
-		web
-	      .ignoring()
-	         .antMatchers("/resources/**");
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter#configure(org.springframework.security.config.annotation.web.builders.HttpSecurity)
-	 */
-	@Override
-    protected void configure(HttpSecurity http) throws Exception {
-		
-		http.csrf().requireCsrfProtectionMatcher(csrfMatcher())
-			.and()
-				.formLogin()
-        			.loginPage("/signin")
-        			.loginProcessingUrl("/j_spring_security_check")
-        			.usernameParameter("j_username")
-        			.passwordParameter("j_password")
-        			.failureHandler(authenticationFailureHandler())
-        	.and()
-        		.logout()
-        			.logoutUrl("/logout")
-        	.and()
-        		.authorizeRequests()
-        			// Everybody has access to this URL "anonymous"
-        			.antMatchers("/", "/signin", "/signup",
-        					"/error", "/unknownerror")
-    					.permitAll()
-    				.antMatchers("/**").authenticated()
-    				// All request has to be authenticated
-    				.anyRequest().authenticated() 		
-        	.and()
-        		.exceptionHandling().accessDeniedPage("/accessdenied");
-        		
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter#configure(org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder)
-	 */
-	@Override
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.inMemoryAuthentication()
-				.withUser("user").password("demo").roles("USER")
-				.and()
-				.withUser("admin").password("admin").roles("ADMIN");
-	}
+        web.ignoring().antMatchers("/resources/**");
+    }
 
-	/**
-	 * Authentication failure handler.
-	 *
-	 * @return the authentication failure handler
-	 */
-	@Bean
-	public AuthenticationFailureHandler authenticationFailureHandler() {
-		ExceptionMappingAuthenticationFailureHandler securityExceptionTranslationHandler = new ExceptionMappingAuthenticationFailureHandler();
-		
-		final Map<String, String> failureUrlMap = new HashMap<>();
-		failureUrlMap.put(CredentialsExpiredException.class.getCanonicalName(), "/newPassword");
+    /*
+     * (non-Javadoc)
+     * 
+     * @see org.springframework.security.config.annotation.web.configuration.
+     * WebSecurityConfigurerAdapter
+     * #configure(org.springframework.security.config
+     * .annotation.web.builders.HttpSecurity)
+     */
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+
+        http.csrf().requireCsrfProtectionMatcher(csrfMatcher()).and().formLogin().loginPage("/signin")
+                .loginProcessingUrl("/j_spring_security_check").usernameParameter("j_username")
+                .passwordParameter("j_password").failureHandler(authenticationFailureHandler()).and()
+                .logout().logoutUrl("/logout").and().authorizeRequests()
+                // Everybody has access to this URL "anonymous"
+                .antMatchers("/", "/signin", "/signup", "/error", "/unknownerror").permitAll()
+                .antMatchers("/**").authenticated()
+                // All request has to be authenticated
+                .anyRequest().authenticated().and().exceptionHandling().accessDeniedPage("/accessdenied");
+
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see org.springframework.security.config.annotation.web.configuration.
+     * WebSecurityConfigurerAdapter
+     * #configure(org.springframework.security.config
+     * .annotation.authentication.builders.AuthenticationManagerBuilder)
+     */
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.inMemoryAuthentication().withUser("user").password("demo").roles("USER").and().withUser("admin")
+                .password("admin").roles("ADMIN");
+    }
+
+    /**
+     * Authentication failure handler.
+     *
+     * @return the authentication failure handler
+     */
+    @Bean
+    public AuthenticationFailureHandler authenticationFailureHandler() {
+        ExceptionMappingAuthenticationFailureHandler securityExceptionTranslationHandler = new ExceptionMappingAuthenticationFailureHandler();
+
+        final Map<String, String> failureUrlMap = new HashMap<>();
+        failureUrlMap.put(CredentialsExpiredException.class.getCanonicalName(), "/newPassword");
         securityExceptionTranslationHandler.setExceptionMappings(failureUrlMap);
         securityExceptionTranslationHandler.setDefaultFailureUrl("/signin?error=1");
-		
-		return securityExceptionTranslationHandler;
-	}
-	
-	/**
-	 * Password encoder.
-	 *
-	 * @return the password encoder
-	 */
-	@Bean
-	public PasswordEncoder passwordEncoder() {
-		return new StandardPasswordEncoder();
-	}
 
-	/**
-	 * Csrf matcher.
-	 *
-	 * @return the request matcher
-	 */
-	@Bean(name = "csrfMatcher")
-	public RequestMatcher csrfMatcher() {
-		return new RequestMatcher() {
-			private Pattern allowedMethods = Pattern.compile("^(GET|HEAD|TRACE|OPTIONS)$");
-			
-			@Override
-			public boolean matches(HttpServletRequest request) {
-				return !allowedMethods.matcher(request.getMethod()).matches();
-			}
-		};
-	}
+        return securityExceptionTranslationHandler;
+    }
+
+    /**
+     * Password encoder.
+     *
+     * @return the password encoder
+     */
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new StandardPasswordEncoder();
+    }
+
+    /**
+     * Csrf matcher.
+     *
+     * @return the request matcher
+     */
+    @Bean(name = "csrfMatcher")
+    public RequestMatcher csrfMatcher() {
+        return new RequestMatcher() {
+            private Pattern allowedMethods = Pattern.compile("^(GET|HEAD|TRACE|OPTIONS)$");
+
+            @Override
+            public boolean matches(HttpServletRequest request) {
+                return !allowedMethods.matcher(request.getMethod()).matches();
+            }
+        };
+    }
 }

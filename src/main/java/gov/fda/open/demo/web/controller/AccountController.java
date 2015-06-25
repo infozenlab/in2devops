@@ -24,29 +24,31 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class AccountController {
 
-	/** The Constant LOG. */
-	private static final Logger LOG = LoggerFactory.getLogger(AccountController.class);
-	
-	/**
-	 * Accesss denied.
-	 *
-	 * @param principal the principal
-	 * @param request the request
-	 * @return the string
-	 */
-	@RequestMapping(value = "accessdenied", method = {RequestMethod.GET, RequestMethod.POST})
-	@Loggable(LogLevel.INFO)
-	public String accesssDenied(Principal principal) {
+    /** The Constant LOG. */
+    private static final Logger LOG = LoggerFactory.getLogger(AccountController.class);
 
-		String userName = "Anonymous";
-		if (principal != null) {
-			userName = principal.getName();
-		}
-		
-		// Which page ???
-		LOG.warn("User {} denied access this page !!!", userName);
+    /**
+     * Accesss denied.
+     *
+     * @param principal
+     *            the principal
+     * @param request
+     *            the request
+     * @return the string
+     */
+    @RequestMapping(value = "accessdenied", method = { RequestMethod.GET, RequestMethod.POST })
+    @Loggable(LogLevel.INFO)
+    public String accesssDenied(Principal principal) {
 
-		return "error/accessdenied";
+        String userName = "Anonymous";
+        if (principal != null) {
+            userName = principal.getName();
+        }
 
-	}
+        // Which page ???
+        LOG.warn("User {} denied access this page !!!", userName);
+
+        return "error/accessdenied";
+
+    }
 }

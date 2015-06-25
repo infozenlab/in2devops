@@ -14,59 +14,61 @@ import java.util.Map;
  */
 public class DrugFrequency {
 
-	/** The date. */
-	private Date date;
+    /** The date. */
+    private Date date;
 
-	/** The frequency. */
-	private Map<String, Integer> frequency;
+    /** The frequency. */
+    private Map<String, Integer> frequency;
 
-	/**
-	 * Instantiates a new drug frequency.
-	 */
-	DrugFrequency() {
-	}
+    /**
+     * Instantiates a new drug frequency.
+     */
+    DrugFrequency() {
+    }
 
-	/**
-	 * Instantiates a new drug frequency.
-	 *
-	 * @param reactionDate the _reaction date
-	 * @param frequency the _frequency
-	 */
-	public DrugFrequency(Date reactionDate, Map<String, Integer> frequency) {
-		this.date = reactionDate;
-		this.frequency = frequency;
-	}
+    /**
+     * Instantiates a new drug frequency.
+     *
+     * @param reactionDate
+     *            the _reaction date
+     * @param frequency
+     *            the _frequency
+     */
+    public DrugFrequency(Date reactionDate, Map<String, Integer> frequency) {
+        this.date = reactionDate;
+        this.frequency = frequency;
+    }
 
-	/**
-	 * Gets the date.
-	 *
-	 * @return the date
-	 */
-	public Date getDate() {
-		return date;
-	}
+    /**
+     * Gets the date.
+     *
+     * @return the date
+     */
+    public Date getDate() {
+        return date;
+    }
 
-	/**
-	 * Gets the frequency.
-	 *
-	 * @return the frequency
-	 */
-	public Map<String, Integer> getFrequency() {
-		return frequency;
-	}
-	
-	/**
-	 * Gets the total.
-	 *
-	 * @return the total
-	 */
-	public Integer getTotal() {
-		Integer total = 0;
-		for(Integer freq : frequency.values()) {
-			total += freq;
-		}
-		
-		return total;
-	}
+    /**
+     * Gets the frequency.
+     *
+     * @return the frequency
+     */
+    public Map<String, Integer> getFrequency() {
+        return frequency;
+    }
+
+    /**
+     * Gets the total.
+     *
+     * @return the total
+     */
+    public Integer getTotal() {
+        Integer total = 0;
+        for (Integer freq : frequency.values()) {
+            total += freq;
+        }
+
+        return total;
+    }
 
 }

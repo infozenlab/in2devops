@@ -26,120 +26,130 @@ import org.springframework.stereotype.Component;
 @Component
 @Aspect
 public class LoggingAspect {
-	
-	/** The before string. */
-	private static String BEFORE_STRING = "[ entering < {0} > ]";
 
-	/** The before with params string. */
-	private static String BEFORE_WITH_PARAMS_STRING = "[ entering < {0} > with params {1} ]";
+    /** The before string. */
+    private static String BEFORE_STRING = "[ entering < {0} > ]";
 
-	/** The after throwing. */
-	private static String AFTER_THROWING = "[ exception thrown < {0} > exception message {1} with params {2} ]";
+    /** The before with params string. */
+    private static String BEFORE_WITH_PARAMS_STRING = "[ entering < {0} > with params {1} ]";
 
-	/** The after returning. */
-	private static String AFTER_RETURNING = "[ leaving < {0} > returning {1} ]";
+    /** The after throwing. */
+    private static String AFTER_THROWING = "[ exception thrown < {0} > exception message {1} with params {2} ]";
 
-	/** The after returning void. */
-	private static String AFTER_RETURNING_VOID = "[ leaving < {0} > ]";
+    /** The after returning. */
+    private static String AFTER_RETURNING = "[ leaving < {0} > returning {1} ]";
 
-	/** The logger. */
-	@Inject
-	private DefaultLoggerServiceImpl logger;
+    /** The after returning void. */
+    private static String AFTER_RETURNING_VOID = "[ leaving < {0} > ]";
 
-	/**
-	 * ********************.
-	 *
-	 * @param joinPoint the join point
-	 * @param annotation the annotation
-	 * @return the object
-	 * @throws Throwable the throwable
-	 */
-	@Around(value = "@annotation(annotation)")
-	public Object logAround(final ProceedingJoinPoint joinPoint, final Loggable annotation) throws Throwable {
+    /** The logger. */
+    @Inject
+    private DefaultLoggerServiceImpl logger;
 
-		final Object returnVal;
+    /**
+     * ********************.
+     *
+     * @param joinPoint
+     *            the join point
+     * @param annotation
+     *            the annotation
+     * @return the object
+     * @throws Throwable
+     *             the throwable
+     */
+    @Around(value = "@annotation(annotation)")
+    public Object logAround(final ProceedingJoinPoint joinPoint, final Loggable annotation) throws Throwable {
 
-		Class<? extends Object> clazz = joinPoint.getTarget().getClass();
-		String name = joinPoint.getSignature().getName();
+        final Object returnVal;
 
-		Object[] args = joinPoint.getArgs();
+        Class<? extends Object> clazz = joinPoint.getTarget().getClass();
+        String name = joinPoint.getSignature().getName();
 
-		if (args == null || args.length == 0) {
-			logger.log(annotation.value(), clazz, null, BEFORE_STRING, name,
-					constructArgumentsString(clazz, joinPoint.getArgs()));
-		} else {
-			logger.log(annotation.value(), clazz, null, BEFORE_WITH_PARAMS_STRING, name,
-					constructArgumentsString(clazz, joinPoint.getArgs()));
-		}
-		returnVal = joinPoint.proceed();
-		// Now Do The After Logging Part
-		afterReturningLog(joinPoint, annotation, returnVal);
+        Object[] args = joinPoint.getArgs();
 
-		return returnVal;
-	}
+        if (args == null || args.length == 0) {
+            logger.log(annotation.value(), clazz, null, BEFORE_STRING, name,
+                    constructArgumentsString(clazz, joinPoint.getArgs()));
+        } else {
+            logger.log(annotation.value(), clazz, null, BEFORE_WITH_PARAMS_STRING, name,
+                    constructArgumentsString(clazz, joinPoint.getArgs()));
+        }
+        returnVal = joinPoint.proceed();
+        // Now Do The After Logging Part
+        afterReturningLog(joinPoint, annotation, returnVal);
 
-	/**
-	 * After throwing.
-	 *
-	 * @param joinPoint the join point
-	 * @param throwable the throwable
-	 */
-	@AfterThrowing(value = "@annotation(Loggable)", throwing = "throwable", argNames = "joinPoint, throwable")
-	public void afterThrowing(JoinPoint joinPoint, Throwable throwable) {
+        return returnVal;
+    }
 
-		Class<? extends Object> clazz = joinPoint.getTarget().getClass();
-		String name = joinPoint.getSignature().getName();
-		logger.log(LogLevel.ERROR, clazz, throwable, AFTER_THROWING, name, throwable.getMessage(),
-				constructArgumentsString(joinPoint.getArgs()));
-	}
+    /**
+     * After throwing.
+     *
+     * @param joinPoint
+     *            the join point
+     * @param throwable
+     *            the throwable
+     */
+    @AfterThrowing(value = "@annotation(Loggable)", throwing = "throwable", argNames = "joinPoint, throwable")
+    public void afterThrowing(JoinPoint joinPoint, Throwable throwable) {
 
-	/**
-	 * ************.
-	 *
-	 * @param joinPoint the join point
-	 * @param loggable the loggable
-	 * @param returnValue the return value
-	 */
-	private void afterReturningLog(final JoinPoint joinPoint, final Loggable loggable,
-			final Object returnValue) {
+        Class<? extends Object> clazz = joinPoint.getTarget().getClass();
+        String name = joinPoint.getSignature().getName();
+        logger.log(LogLevel.ERROR, clazz, throwable, AFTER_THROWING, name, throwable.getMessage(),
+                constructArgumentsString(joinPoint.getArgs()));
+    }
 
-		Class<? extends Object> clazz = joinPoint.getTarget().getClass();
-		String name = joinPoint.getSignature().getName();
+    /**
+     * ************.
+     *
+     * @param joinPoint
+     *            the join point
+     * @param loggable
+     *            the loggable
+     * @param returnValue
+     *            the return value
+     */
+    private void afterReturningLog(final JoinPoint joinPoint, final Loggable loggable,
+            final Object returnValue) {
 
-		if (joinPoint.getSignature() instanceof MethodSignature) {
-			MethodSignature signature = (MethodSignature) joinPoint.getSignature();
-			Class<?> returnType = signature.getReturnType();
-			if (returnType.getName().compareTo("void") == 0) {
-				logger.log(loggable.value(), clazz, null, AFTER_RETURNING_VOID, name,
-						constructArgumentsString(returnValue));
-				return;
-			}
-		}
-		logger.log(loggable.value(), clazz, null, AFTER_RETURNING, name,
-				constructArgumentsString(returnValue));
-	}
+        Class<? extends Object> clazz = joinPoint.getTarget().getClass();
+        String name = joinPoint.getSignature().getName();
 
-	/**
-	 * ********.
-	 *
-	 * @param clazz the clazz
-	 * @param arguments the arguments
-	 * @return the string
-	 */
-	private String constructArgumentsString(Object... arguments) {
+        if (joinPoint.getSignature() instanceof MethodSignature) {
+            MethodSignature signature = (MethodSignature) joinPoint.getSignature();
+            Class<?> returnType = signature.getReturnType();
+            if (returnType.getName().compareTo("void") == 0) {
+                logger.log(loggable.value(), clazz, null, AFTER_RETURNING_VOID, name,
+                        constructArgumentsString(returnValue));
+                return;
+            }
+        }
+        logger.log(loggable.value(), clazz, null, AFTER_RETURNING, name,
+                constructArgumentsString(returnValue));
+    }
 
-		StringBuilder buffer = new StringBuilder();
-		if (arguments != null) {
-    		for (Object object : arguments) {
-    			buffer.append(object);
-    			buffer.append(",");
-    		}
-		}
+    /**
+     * ********.
+     *
+     * @param clazz
+     *            the clazz
+     * @param arguments
+     *            the arguments
+     * @return the string
+     */
+    private String constructArgumentsString(Object... arguments) {
 
-		if (buffer.length() > 0) {
-			return buffer.substring(0, buffer.length() - 1);
-		} else {
-			return buffer.toString();
-		}
-	}
+        StringBuilder buffer = new StringBuilder();
+        if (arguments != null) {
+            for (Object object : arguments) {
+                buffer.append(object);
+                buffer.append(",");
+            }
+        }
+
+        if (buffer.length() > 0) {
+            return buffer.substring(0, buffer.length() - 1);
+        } else {
+            return buffer.toString();
+        }
+    }
 }

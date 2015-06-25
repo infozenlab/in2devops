@@ -15,19 +15,19 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Log annotation class used at the method level to log events
- * around the invocation methods using Spring AOP
+ * Log annotation class used at the method level to log events around the
+ * invocation methods using Spring AOP
  * 
  */
 @Target({ ElementType.METHOD })
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 public @interface Loggable {
-	
-	/**
-	 * Value.
-	 *
-	 * @return the log level
-	 */
-	LogLevel value();
+
+    /**
+     * Value.
+     *
+     * @return the log level
+     */
+    LogLevel value();
 }

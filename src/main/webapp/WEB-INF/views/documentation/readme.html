@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title th:text="#{view.index.title}">Welcome!</title>
+<link href="../../../resources/css/usptostrap.min.css" rel="stylesheet"
+	media="screen" th:href="@{/resources/css/usptostrap.min.css}" />
+<link href="../../../resources/css/main.css" rel="stylesheet"
+	media="screen" th:href="@{/resources/css/main.css}" />
+<link href="../../../resources/css/jquery-ui.min.css" rel="stylesheet"
+	media="screen" th:href="@{/resources/css/jquery-ui.min.css}" />
+<script src="../../../resources/js/bootstrap.min.js"
+	th:src="@{/resources/js/bootstrap.min.js}"></script>
+<script src="../../../resources/js/jquery-1.11.1.min.js"
+	th:src="@{/resources/js/jquery-1.11.1.min.js}"></script>
+<script src="../../../resources/js/jquery-ui.min.js"
+	th:src="@{/resources/js/jquery-ui.min.js}"></script>
+<script src="../../../resources/js/d3.v3.min.js"
+	th:src="@{/resources/js/d3.v3.min.js}"></script>
+</head>
+<style>
+<!-- /* Font Definitions */
+@font-face {
+	font-family: "Cambria Math";
+	panose-1: 2 4 5 3 5 4 6 3 2 4;
+}
+
+@font-face {
+	font-family: Calibri;
+	panose-1: 2 15 5 2 2 2 4 3 2 4;
+}
+/* Style Definitions */
+p.MsoNormal,li.MsoNormal,div.MsoNormal {
+	margin-top: 0in;
+	margin-right: 0in;
+	margin-bottom: 10.0pt;
+	margin-left: 0in;
+	line-height: 115%;
+	font-size: 11.0pt;
+	font-family: "Calibri", "sans-serif";
+}
+
+.MsoChpDefault {
+	font-family: "Calibri", "sans-serif";
+}
+
+.MsoPapDefault {
+	margin-bottom: 10.0pt;
+	line-height: 115%;
+}
+
+@page WordSection1 {
+	size: 8.5in 11.0in;
+	margin: 1.0in 1.0in 1.0in 1.0in;
+}
+
+div.WordSection1 {
+	page: WordSection1;
+}
+
+--> /* body{ */
+/*     width:1100px; */
+/*     margin:50px auto; */
+/* } */
+.pl-content {
+	padding-left: 20px;
+}
+
+path {
+	stroke: #fff;
+}
+
+path:hover {
+	opacity: 0.9;
+}
+
+rect:hover {
+	fill: blue;
+}
+
+.axis {
+	font: 10px sans-serif;
+}
+
+.legend tr {
+	border-bottom: 1px solid grey;
+}
+
+.legend tr:first-child {
+	border-top: 1px solid grey;
+}
+
+.axis path,.axis line {
+	fill: none;
+	stroke: #000;
+	shape-rendering: crispEdges;
+}
+
+.x.axis path {
+	display: none;
+}
+
+.legend {
+	margin-bottom: 76px;
+	display: inline-block;
+	border-collapse: collapse;
+	border-spacing: 0px;
+}
+
+.legend,td {
+	padding: 4px 5px;
+	vertical-align: bottom;
+}
+
+.legendFreq,.legendPerc {
+	align: right;
+	width: 50px;
+}
+</style>
+<body>
+	<div th:replace="fragments/header :: header">&nbsp;</div>
+	<div class="pl-container">
+		<div th:replace="fragments/sideMenu :: sideMenu">&nbsp;</div>
+		<div class="pl-content">
+			<div class="panel" style="padding-left: 50px">
+				<h1>FDA Open Data Spring MVC, Bootstrap Application Setup</h1>
+				<h2>Summary</h2>
+				<p>The project is a web application visualizing FDA Open Data as
+					per required by FDA Open Data Challenge.</p>
+				<h2>Generated project characteristics</h2>
+				<ul>
+					<li>No-xml Spring MVC 4 web application for Servlet 3.0
+						environment</li>
+					<li>Thymeleaf, Bootstrap</li>
+					<li>JUnit/Mockito</li>
+					<li>Spring Security 4.1</li>
+				</ul>
+				<h2>Pre-requisites</h2>
+				<ul>
+					<li>Tomcat 7+</li>
+					<li>JAVA 1.8+</li>
+					<li>Maven 3.2+</li>
+				</ul>
+				<h2>Access Application from Private Cloud</h2>
+				<p>
+					Deployed code and Live application can be accessed anytime at <a
+						href="http://fda.identrix.com/">http://fda.identrix.com</a>
+				</p>
+				<h2>Installation</h2>
+				<p>To install the application in your local repository execute
+					following commands:</p>
+				<div>
+					<pre>    git clone https://github.com/infozenlab/fdademo.git
+    cd fdademo
+    mvn clean install</pre>
+				</div>
+				<h2>Run the project</h2>
+				<div>
+					<pre>    mvn test tomcat7:run</pre>
+				</div>
+				<h2>Test on the browser</h2>
+				<pre>
+					<code>http://localhost:8080/fdademo
+</code>
+				</pre>
+				<p>Note: No additional services are required in order to start
+					the application. No DB configuration is required.</p>
+				<p>Creating a manual deployment</p>
+				<div>
+					<pre>    git clone https://github.com/infozenlab/fdademo.git
+    cd fdademo/target
+      cp fdademo.war
+    cd $TOMCAT_HOME/webapps</pre>
+				</div>
+				<p>Paste fdademo.war Start tomcat server</p>
+				<h2>Test on the browser</h2>
+				<pre>
+					<code>http://localhost:8080/fdademo
+</code>
+				</pre>
+				<p>Note: No additional services are required in order to start
+					the application. No DB configuration is required.</p>
+				<h2>Creating a new project in Eclipse</h2>
+				<ul>
+					<li>Import project URI by <code>Import ... &gt;
+							Projects from Git &gt; Clone URI</code>
+					</li>
+					<li>Paste <a href="https://github.com/infozenlab/fdademo.git">https://github.com/infozenlab/fdademo.git</a>
+						into <code>URI</code>
+					</li>
+					<li>Select <code>master</code> branch
+					</li>
+					<li>Confirm directory and remote name <code>origin</code>
+					</li>
+					<li>Import as general project</li>
+					<li>Leave the default <code>fdademo</code> as project name
+					</li>
+					<li>
+						<p>Click Finish</p>
+					</li>
+					<li>
+						<p>
+							Right-Click on project and
+							<code>Configure &gt; Convert to Maven Project</code>
+						</p>
+					</li>
+					<li>Right-Click on project <code>Run as &gt; Run on
+							Server</code> follow wizard till server is up and running
+					</li>
+				</ul>
+				<h2>Test on the browser</h2>
+				<pre>
+					<code>http://localhost:8080/fdademo
+</code>
+				</pre>
+				<p>Note: No additional services are required in order to start
+					the application. No DB configuration is required.</p>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

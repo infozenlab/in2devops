@@ -43,134 +43,164 @@ import org.thymeleaf.templateresolver.TemplateResolver;
 @EnableAspectJAutoProxy
 class WebMvcConfig extends WebMvcConfigurationSupport {
 
-	/** The Constant MESSAGE_SOURCE. */
-	private static final String MESSAGE_SOURCE = "/WEB-INF/i18n/messages";
-	
-	/** The Constant VIEWS. */
-	private static final String VIEWS = "/WEB-INF/views/";
+    /** The Constant MESSAGE_SOURCE. */
+    private static final String MESSAGE_SOURCE = "/WEB-INF/i18n/messages";
 
-	/** The Constant RESOURCES_HANDLER. */
-	private static final String RESOURCES_HANDLER = "/resources/";
-	
-	/** The Constant RESOURCES_LOCATION. */
-	private static final String RESOURCES_LOCATION = RESOURCES_HANDLER + "**";
+    /** The Constant VIEWS. */
+    private static final String VIEWS = "/WEB-INF/views/";
 
-	/* (non-Javadoc)
-	 * @see org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport#requestMappingHandlerMapping()
-	 */
-	@Override
-	public RequestMappingHandlerMapping requestMappingHandlerMapping() {
-		RequestMappingHandlerMapping requestMappingHandlerMapping = super.requestMappingHandlerMapping();
-		requestMappingHandlerMapping.setUseSuffixPatternMatch(false);
-		requestMappingHandlerMapping.setUseTrailingSlashMatch(false);
-		return requestMappingHandlerMapping;
-	}
+    /** The Constant RESOURCES_HANDLER. */
+    private static final String RESOURCES_HANDLER = "/resources/";
 
-	/**
-	 * Message source.
-	 *
-	 * @return the message source
-	 */
-	@Bean(name = "messageSource")
-	public MessageSource messageSource() {
-		ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
-		messageSource.setBasename(MESSAGE_SOURCE);
-		messageSource.setCacheSeconds(5);
-		return messageSource;
-	}
+    /** The Constant RESOURCES_LOCATION. */
+    private static final String RESOURCES_LOCATION = RESOURCES_HANDLER + "**";
 
-	/**
-	 * Template resolver.
-	 *
-	 * @return the template resolver
-	 */
-	@Bean
-	public TemplateResolver templateResolver() {
-		TemplateResolver templateResolver = new ServletContextTemplateResolver();
-		templateResolver.setPrefix(VIEWS);
-		templateResolver.setSuffix(".html");
-		templateResolver.setTemplateMode("HTML5");
-		templateResolver.setCacheable(false);
-		return templateResolver;
-	}
+    /*
+     * (non-Javadoc)
+     * 
+     * @see
+     * org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport
+     * #requestMappingHandlerMapping()
+     */
+    @Override
+    public RequestMappingHandlerMapping requestMappingHandlerMapping() {
+        RequestMappingHandlerMapping requestMappingHandlerMapping = super.requestMappingHandlerMapping();
+        requestMappingHandlerMapping.setUseSuffixPatternMatch(false);
+        requestMappingHandlerMapping.setUseTrailingSlashMatch(false);
+        return requestMappingHandlerMapping;
+    }
 
-	/**
-	 * Template engine.
-	 *
-	 * @return the spring template engine
-	 */
-	@Bean
-	public SpringTemplateEngine templateEngine() {
-		SpringTemplateEngine templateEngine = new SpringTemplateEngine();
-		templateEngine.setTemplateResolver(templateResolver());
-		templateEngine.addDialect(new SpringSecurityDialect());
-		return templateEngine;
-	}
+    /**
+     * Message source.
+     *
+     * @return the message source
+     */
+    @Bean(name = "messageSource")
+    public MessageSource messageSource() {
+        ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
+        messageSource.setBasename(MESSAGE_SOURCE);
+        messageSource.setCacheSeconds(5);
+        return messageSource;
+    }
 
-	/**
-	 * View resolver.
-	 *
-	 * @return the thymeleaf view resolver
-	 */
-	@Bean
-	public ThymeleafViewResolver viewResolver() {
-		ThymeleafViewResolver thymeleafViewResolver = new ThymeleafViewResolver();
-		thymeleafViewResolver.setTemplateEngine(templateEngine());
-		thymeleafViewResolver.setCharacterEncoding("UTF-8");
-		return thymeleafViewResolver;
-	}
+    /**
+     * Template resolver.
+     *
+     * @return the template resolver
+     */
+    @Bean
+    public TemplateResolver templateResolver() {
+        TemplateResolver templateResolver = new ServletContextTemplateResolver();
+        templateResolver.setPrefix(VIEWS);
+        templateResolver.setSuffix(".html");
+        templateResolver.setTemplateMode("HTML5");
+        templateResolver.setCacheable(false);
+        return templateResolver;
+    }
 
-	/* (non-Javadoc)
-	 * @see org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport#getValidator()
-	 */
-	@Override
-	public Validator getValidator() {
-		LocalValidatorFactoryBean validator = new LocalValidatorFactoryBean();
-		validator.setValidationMessageSource(messageSource());
-		return validator;
-	}
+    /**
+     * Template engine.
+     *
+     * @return the spring template engine
+     */
+    @Bean
+    public SpringTemplateEngine templateEngine() {
+        SpringTemplateEngine templateEngine = new SpringTemplateEngine();
+        templateEngine.setTemplateResolver(templateResolver());
+        templateEngine.addDialect(new SpringSecurityDialect());
+        return templateEngine;
+    }
 
-	/* (non-Javadoc)
-	 * @see org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport#addResourceHandlers(org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry)
-	 */
-	@Override
-	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		registry.addResourceHandler(RESOURCES_HANDLER).addResourceLocations(RESOURCES_LOCATION);
-	}
+    /**
+     * View resolver.
+     *
+     * @return the thymeleaf view resolver
+     */
+    @Bean
+    public ThymeleafViewResolver viewResolver() {
+        ThymeleafViewResolver thymeleafViewResolver = new ThymeleafViewResolver();
+        thymeleafViewResolver.setTemplateEngine(templateEngine());
+        thymeleafViewResolver.setCharacterEncoding("UTF-8");
+        return thymeleafViewResolver;
+    }
 
-	/* (non-Javadoc)
-	 * @see org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport#configureDefaultServletHandling(org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer)
-	 */
-	@Override
-	public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
-		configurer.enable();
-	}
+    /*
+     * (non-Javadoc)
+     * 
+     * @see
+     * org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport
+     * #getValidator()
+     */
+    @Override
+    public Validator getValidator() {
+        LocalValidatorFactoryBean validator = new LocalValidatorFactoryBean();
+        validator.setValidationMessageSource(messageSource());
+        return validator;
+    }
 
-	/* (non-Javadoc)
-	 * @see org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport#configureMessageConverters(java.util.List)
-	 */
-	@Override
-	public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
-		Jackson2ObjectMapperBuilder builder = new Jackson2ObjectMapperBuilder();
-		builder.indentOutput(true).dateFormat(new SimpleDateFormat(DF_MM_YYYY));
-		converters.add(new MappingJackson2HttpMessageConverter(builder.build()));
-		converters.add(new MappingJackson2XmlHttpMessageConverter(builder.createXmlMapper(true).build()));
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport#addViewControllers(org.springframework.web.servlet.config.annotation.ViewControllerRegistry)
-	 */
-	@Override
-	protected void addViewControllers(ViewControllerRegistry registry) {
-		registry.addViewController("/signin").setViewName("account/login");
-		registry.addViewController("/documentation/agile").setViewName("documentation/agile");
-		registry.addViewController("/documentation/appdev").setViewName("documentation/appdev");
-		registry.addViewController("/documentation/devops").setViewName("documentation/devops");
-		registry.addViewController("/documentation/personamap").setViewName("documentation/personamap");
-		registry.addViewController("/documentation/lean").setViewName("documentation/lean");
-		registry.addViewController("/documentation/pair").setViewName("documentation/pair");
-		registry.addViewController("/documentation/bht").setViewName("documentation/bht");
-		registry.addViewController("/documentation/focus").setViewName("documentation/focus");
-	}
+    /*
+     * (non-Javadoc)
+     * 
+     * @see
+     * org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport
+     * #addResourceHandlers(org.springframework.web.servlet.config.annotation.
+     * ResourceHandlerRegistry)
+     */
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler(RESOURCES_HANDLER).addResourceLocations(RESOURCES_LOCATION);
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see
+     * org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport
+     * #configureDefaultServletHandling(org.springframework.web.servlet.config.
+     * annotation.DefaultServletHandlerConfigurer)
+     */
+    @Override
+    public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
+        configurer.enable();
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see
+     * org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport
+     * #configureMessageConverters(java.util.List)
+     */
+    @Override
+    public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
+        Jackson2ObjectMapperBuilder builder = new Jackson2ObjectMapperBuilder();
+        builder.indentOutput(true).dateFormat(new SimpleDateFormat(DF_MM_YYYY));
+        converters.add(new MappingJackson2HttpMessageConverter(builder.build()));
+        converters.add(new MappingJackson2XmlHttpMessageConverter(builder.createXmlMapper(true).build()));
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see
+     * org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport
+     * #addViewControllers(org.springframework.web.servlet.config.annotation.
+     * ViewControllerRegistry)
+     */
+    @Override
+    protected void addViewControllers(ViewControllerRegistry registry) {
+        registry.addViewController("/signin").setViewName("account/login");
+        registry.addViewController("/documentation/agile").setViewName("documentation/agile");
+        registry.addViewController("/documentation/appdev").setViewName("documentation/appdev");
+        registry.addViewController("/documentation/devops").setViewName("documentation/devops");
+        registry.addViewController("/documentation/personamap").setViewName("documentation/personamap");
+        registry.addViewController("/documentation/lean").setViewName("documentation/lean");
+        registry.addViewController("/documentation/pair").setViewName("documentation/pair");
+        registry.addViewController("/documentation/bht").setViewName("documentation/bht");
+        registry.addViewController("/documentation/focus").setViewName("documentation/focus");
+        registry.addViewController("/documentation/dsp").setViewName("documentation/dsp");
+        registry.addViewController("/documentation/readme").setViewName("documentation/readme");
+        registry.addViewController("/documentation/mobile").setViewName("documentation/mobile");
+    }
 
 }

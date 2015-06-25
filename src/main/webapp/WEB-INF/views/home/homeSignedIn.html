@@ -9,6 +9,7 @@
     <script src="../../../resources/js/jquery-ui.min.js" th:src="@{/resources/js/jquery-ui.min.js}"></script>
     <script src="../../../resources/js/bootstrap.min.js" th:src="@{/resources/js/bootstrap.min.js}"></script>
     <script src="../../../resources/js/d3.v3.min.js" th:src="@{/resources/js/d3.v3.min.js}"></script>
+    <script src="../../../resources/js/jquery.blockui.min.js" th:src="@{/resources/js/jquery.blockui.min.js}"></script>
 </head>
 <style>
 .pl-content{
@@ -95,7 +96,7 @@ rect:hover {  fill:blue; }
 	                                    <option id="6ago">6 Months</option>
 	                                    <option id="12ago">12 Months</option>
 	                                    <option id="18ago">18 Months</option>
-	                                    <option id="24ago">24 Months</option>
+	                                    <option id="24ago" selected="selected">24 Months</option>
 	                                    <option></option>        
 	                            </select>
 	                        </div>
@@ -132,7 +133,7 @@ rect:hover {  fill:blue; }
 	                	</div>
 	                	<div class="row">
 	                		<div class="col-sm-4">
-	                			<input class="drugInput" id="drugName" name="drugName"/>
+	                			<input class="drugInput" id="drugName" name="drugName" required="true"/>
 	                		</div>
 	                		<div class="col-sm-7">
 	                            <button type="submit" id="postAnnouncement"
@@ -167,6 +168,15 @@ $(document).ready(function() {
 	}
               $('#updateGraphics').submit(function(e) {
                    e.preventDefault();
+                   $.blockUI({ css: { 
+                       border: 'none', 
+                       padding: '10px', 
+                       backgroundColor: '#000', 
+                       '-webkit-border-radius': '10px', 
+                       '-moz-border-radius': '10px', 
+                       opacity: .5, 
+                       color: '#fff' 
+                   }});
                    data = $("#updateGraphics :input").filter(function(index, element) {
                 	   return $(element).val() != "";
                		}).serialize();
@@ -182,19 +192,25 @@ function getMedEvents(data) {
                 data : data,
                 cache : false,
                 success : function(msg) {
+                	$.unblockUI();
                         var obj = msg;
                         if (obj.success) {
                                 freqData = jQuery.makeArray(obj.drugFrequencies);
                                 dashboard('#dashboard',freqData);
                         } else {
-
+							alert(obj.message);
                         }
                 },
                 error : function(e) {
-
-                        if (window.console) {
-                                console.log(e.message);
-                        }
+                	$.unblockUI();
+                    if (window.console) {
+                        console.log(e);
+                    }
+                    try {
+                    	var resp = JSON.parse(e.responseText);
+                    	alert(resp.message);
+                    } catch(e) {}
+                    
                 }
         });
 }
