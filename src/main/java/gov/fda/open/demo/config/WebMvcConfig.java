@@ -201,6 +201,8 @@ class WebMvcConfig extends WebMvcConfigurationSupport {
         registry.addViewController("/documentation/dsp").setViewName("documentation/dsp");
         registry.addViewController("/documentation/readme").setViewName("documentation/readme");
         registry.addViewController("/documentation/mobile").setViewName("documentation/mobile");
+        registry.addViewController("/documentation/sonar1").setViewName("documentation/sonar1");
+        registry.addViewController("/documentation/sonar2").setViewName("documentation/sonar2");
     }
 
 }
