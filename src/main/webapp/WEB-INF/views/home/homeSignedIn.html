@@ -72,7 +72,7 @@ rect:hover {  fill:blue; }
 	                		<div class="col-sm-10">
 		                    	<select style="text-align: left"
 	                                    class="btn btn-default dropdown-toggle btn-select2 form-control form-required"
-	                                    data-toggle="dropdown" id="type" name="type">
+	                                    data-toggle="dropdown" id="type" name="type" type="text" title="Select the type of search from the list!">
 	                                    <option value="REPORTER_COUNTRY">By Reporting Country</option>
 	                                    <option value="PATIENT_GENDER">By Gender</option>
 	                                    <option value="SENDER_TYPE">By Sender Type </option>
@@ -92,7 +92,7 @@ rect:hover {  fill:blue; }
 	                		<div class="col-sm-10">
 		                    	<select style="text-align: left"
 	                                    class="btn btn-default dropdown-toggle btn-select2 form-control form-required"
-	                                    data-toggle="dropdown" id="startDate" name="startDate">
+	                                    data-toggle="dropdown" id="startDate" name="startDate" type="text" title="Select the period to run query from the list!">
 	                                    <option id="6ago">6 Months</option>
 	                                    <option id="12ago">12 Months</option>
 	                                    <option id="18ago">18 Months</option>
@@ -112,7 +112,7 @@ rect:hover {  fill:blue; }
 	                		<div class="col-sm-10">
 		                    	<select style="text-align: left"
 	                                    class="btn btn-default dropdown-toggle btn-select2 form-control form-required"
-	                                    data-toggle="dropdown" id="maxFetch" name="maxfetch">
+	                                    data-toggle="dropdown" id="maxFetch" name="maxfetch" type="text" title="Select number of results to fetch from the list!">
 	                                    <option value="100">100</option>
 	                                    <option value="200">200</option>
 	                                    <option value="300">300</option>
@@ -133,11 +133,11 @@ rect:hover {  fill:blue; }
 	                	</div>
 	                	<div class="row">
 	                		<div class="col-sm-4">
-	                			<input class="drugInput" id="drugName" name="drugName" required="true"/>
+	                			<input class="drugInput" id="drugName" name="drugName" required="true" type="text" title="Start typing any Drug name and pick from the list!"/>
 	                		</div>
 	                		<div class="col-sm-7">
 	                            <button type="submit" id="postAnnouncement"
-	                        		class="btn btn-primary pull-right">View Results</button>
+	                        		class="btn btn-primary pull-right" title="Hover over graph to see it Change!">View Results</button>
 	                        </div> 
 	                    </div>
 	                </div>
@@ -153,6 +153,17 @@ rect:hover {  fill:blue; }
 <script type="text/javascript" src="../../../resources/js/uspto-main.min.js" th:src="@{/resources/js/uspto-main.min.js}"></script> 
 <script th:inline="javascript">
         /*<![CDATA[*/
+                   
+$(document).tooltip({ selector: "[title]",
+                              placement: "top",
+                              trigger: "focus",
+                              animation: true,
+                              show: {
+                            	     ready: false
+                            	 },
+                            	 hide: {
+                            	     event: false
+                            	 }}); 
 
 var freqData = {};
 
