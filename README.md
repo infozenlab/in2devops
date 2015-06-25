@@ -85,3 +85,10 @@ Test on the browser
 	http://localhost:8080/fdademo
 
 Note: No additional services are required in order to start the application. No DB configuration is required.
+
+Running Selilium Test on Mozilla Firefox
+----------------------------------------
+```bash
+    cd fdademo
+    mvn clean install -P integration-tests
+```
