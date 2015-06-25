@@ -105,7 +105,7 @@ InfoZen leveraged its Agile methods and DevOps principles that have been honed a
 
 We set out to support the business hypothesis: <b>users will see trends when the openFDA data is aggregated and visualized effectively</b>.  
 
-The team used personas to project users who would benefit from an enriched experience that would build upon openFDA<sup>2</sup>. The team examined the whole API to discover any limitations that could be overcome for system stakeholders<sup>3</sup>. We built upon the USPTO style guide and aligned our data visualizations accordingly<sup>4</sup>.   We used a Kanban method, Lean UX, Continuous Integration, and DevOps practices<sup>5</sup>. We emulated the experience of a contract for five people with the requirement of shipping a production application deployed, tested, and documented to enable smooth handover<sup>6</sup>. Each team member was experienced with coding, continuous integration, and DevOps<sup>7</sup>. The team chose a modern, lightweight, technology stack based on proven open source<sup>8</sup> to enable rich functionality with deep security<sup>9</sup>. The application was deployed and tested on both private cloud (VMWare) and public cloud (AWS)<sup>10</sup>, was tested inside/out with automated tools/techniques,<sup>11</sup> and system performance was monitored in real-time<sup>12</sup>.
+The team used personas to project users who would benefit from an enriched experience that would build upon openFDA<b><sup>2</sup></b>. The team examined the whole API to discover any limitations that could be overcome for system stakeholders<b><sup>3</sup></b>. We built upon the USPTO style guide and aligned our data visualizations accordingly<b><sup>4</sup></b>.   We used a Kanban method, Lean UX, Continuous Integration, and DevOps practices<b><sup>5</sup></b>. We emulated the experience of a contract for five people with the requirement of shipping a production application deployed, tested, and documented to enable smooth handover<b><sup>6</sup></b>. Each team member was experienced with coding, continuous integration, and DevOps<b><sup>7</sup></b>. The team chose a modern, lightweight, technology stack based on proven open source<b><sup>8</sup></b> to enable rich functionality with deep security<b><sup>9</sup></b>. The application was deployed and tested on both private cloud (VMWare) and public cloud (AWS)<b><sup>10</sup></b>, was tested inside/out with automated tools/techniques,<b><sup>11</sup></b> and system performance was monitored in real-time<b><sup>12</sup></b>.
 
 The team used the Kanban method to track user stories, technical features, and documentation tasks over the lifecycle.  They held daily stand-ups, user reviews/demos and used Lean UX methods that included personas, wireframes, hypothesis statement, and user stories to rapidly assimilate the development.  The developers tested the API for variations of the hypothesis against usability criteria.  The team collectively decided on application architecture that enabled data to be aggregated and visualized. The team defined continuous integration tooling and target deployment containers.  The selected user interface included Bootstrap, D3.js, and JQuery.  The back-end API layer was Java-based and used Spring MVC, Spring Security, Thymeleaf Template engine, and SLF4J.  The continuous integration was based on Maven, Jenkins, JUnit, and Selenium.   The code was tracked on version control with Git with libraries managed by Nexus.  The target build environments were CentOS hosting Tomcat built with Vagrant.  The developers used the Eclipse IDE.  The team produced low-fidelity diagrams to seed development which began on day one. Features were developed as fully functional vertical slices of the application that were verified by the product owner.  The team took an API-first approach that made these options addressable through a Restful-API. A minimum viable product was defined to include an aggregated visualization of drug-related data that plots the number of events for a given country.
 
@@ -115,15 +115,15 @@ The application architecture was conceived to support the hypothesis that users 
 
 The team held a retrospective on the last day of the sprint.  The velocity of the team was generally within the planned capacity and quality.  The team concluded that this data set could be further enriched for many variations of the business hypothesis.
 
-<sup>1</sup><href>https://playbook.cio.gov/#play6</href>
-<sup>2</sup><href>https://playbook.cio.gov/#play1</href>
-<sup>3</sup><href>https://playbook.cio.gov/#play2</href>
-<sup>4</sup><href>https://playbook.cio.gov/#play3</href>
-<sup>5</sup><href>https://playbook.cio.gov/#play4</href>
-<sup>6</sup><href>https://playbook.cio.gov/#play5</href>
-<sup>7</sup><href>https://playbook.cio.gov/#play7</href>
-<sup>8</sup><href>https://playbook.cio.gov/#play13</href>
-<sup>9</sup><href>https://playbook.cio.gov/#play8</href>
-<sup>10</sup><href>https://playbook.cio.gov/#play9</href>
-<sup>11</sup><href>https://playbook.cio.gov/#play10</href>
-<sup>12</sup><href>https://playbook.cio.gov/#play12</href>
+<b><sup>1</sup></b><href>https://playbook.cio.gov/#play6</href>
+<b><sup>2</sup></b><href>https://playbook.cio.gov/#play1</href>
+<b><sup>3</sup></b><href>https://playbook.cio.gov/#play2</href>
+<b><sup>4</sup</b>><href>https://playbook.cio.gov/#play3</href>
+<b><sup>5</sup></b><href>https://playbook.cio.gov/#play4</href>
+<b><sup>6</sup></b><href>https://playbook.cio.gov/#play5</href>
+<b><sup>7</sup></b><href>https://playbook.cio.gov/#play7</href>
+<b><sup>8</sup></b><href>https://playbook.cio.gov/#play13</href>
+<b><sup>9</sup></b><href>https://playbook.cio.gov/#play8</href>
+<b><sup>10</sup></b><href>https://playbook.cio.gov/#play9</href>
+<b><sup>11</sup></b><href>https://playbook.cio.gov/#play10</href>
+<b><sup>12</sup></b><href>https://playbook.cio.gov/#play12</href>
