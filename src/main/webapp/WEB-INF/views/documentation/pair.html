@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-	<title th:text="#{view.index.title}">Welcome!</title>
+	<title th:text="#{view.pair.title}">Welcome!</title>
+	<link rel="shortcut icon" href="../resources/images/Infozen_favicon.png" type="image/x-icon" />
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
 	<link href="../../../resources/css/usptostrap.min.css" rel="stylesheet" media="screen" th:href="@{/resources/css/usptostrap.min.css}"/>
@@ -56,11 +57,13 @@ rect:hover {  fill:blue; }
    font-family:Calibri;
    font-size: 25px;
    line-height: 1.2;
+   text-align: left;
 }
 .header{
    font-family:Calibri;
    font-size: 30px;
    font-weight: bold;
+   text-align: center;
 }
 </style>
 <body>
@@ -68,17 +71,19 @@ rect:hover {  fill:blue; }
 	<div class="pl-container">
 		<div th:replace="fragments/sideMenu :: sideMenu">&nbsp;</div>
 		<div class="pl-content">
+
+			<div class="header">
+				<p th:text="#{pair.title}"></p>
+			</div>
+			<div class="row">
+				<img class="img-responsive center-block"
+					src="../../../resources/images/pair.jpg"
+					th:src="@{/resources/images/pair.jpg}"
+					alt="InfoZen Pair Programming" width="50%" height="50%" />
+			</div>
 			<div class="pl-pattern">
-				<div class="header">
-						<p th:text="#{pair.title}"></p>
-				</div>
-				<div class="row">
-					<img src="../../../resources/images/pair.jpg"
-						th:src="@{/resources/images/pair.jpg}" alt="InfoZen Pair Programming"
-						width="50%" height="50%" /> <br /> <br />
-				</div>
 				<div class="desc">
-					<p th:text="#{pair.description}"></p>
+					<p th:text="#{pair.description}" align="left"></p>
 				</div>
 			</div>
 		</div>

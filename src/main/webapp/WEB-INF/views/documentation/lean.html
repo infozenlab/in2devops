@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-	<title th:text="#{view.index.title}">Welcome!</title>
+	<title th:text="#{view.lean.title}">Welcome!</title>
+	<link rel="shortcut icon" href="../resources/images/Infozen_favicon.png" type="image/x-icon" />
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
 	<link href="../../../resources/css/usptostrap.min.css" rel="stylesheet" media="screen" th:href="@{/resources/css/usptostrap.min.css}"/>
@@ -47,16 +48,20 @@ rect:hover {  fill:blue; }
 .pl-pattern {
   padding: 30px 0px 30px 30px !important;
   text-align: center !important; 
+    float: right !important;
 }
 .desc{
    font-family:Calibri;
    font-size: 25px;
    line-height: 1.2;
+   text-align: left;
+   float: right ;
 }
 .header{
    font-family:Calibri;
    font-size: 30px;
    font-weight: bold;
+   text-align: center;
 }
 </style>
 <body>
@@ -64,22 +69,23 @@ rect:hover {  fill:blue; }
 	<div class="pl-container">
 		<div th:replace="fragments/sideMenu :: sideMenu">&nbsp;</div>
 		<div class="pl-content">
-			<div class="pl-pattern">
-				<div class="header">
-						<p th:text="#{lean.title}"></p>
-				</div>
-				<div class="row">
-					<img src="../../../resources/images/lean.jpg"
-						th:src="@{/resources/images/lean.jpg}" alt="InfoZen Lean"
-						width="40%" height="40%" /> <br /> <br />
-				</div>
+			<div class="header">
+				<p th:text="#{lean.title}"></p>
+			</div>
+			<div class="row">
+				<img class="img-responsive center-block"
+					src="../../../resources/images/lean.jpg"
+					th:src="@{/resources/images/lean.jpg}" alt="InfoZen Lean"
+					width="40%" height="40%" /> <br />
+			</div>
+			<div class="pl-pattern floating-panel-right">
 				<div class="desc">
-					<p th:text="#{lean.description}"></p>
+					<p th:text="#{lean.description}" align="left"></p>
 				</div>
 			</div>
 		</div>
 	</div>
-	<div th:replace="fragments/footer :: footer">&copy; 2015 The Static Templates</div>
+<div th:replace="fragments/footer :: footer">&copy; 2015 The Static Templates</div>
 <script type="text/javascript" src="../../../resources/js/uspto-main.min.js" th:src="@{/resources/js/uspto-main.min.js}"></script> 
 <script th:inline="javascript">
 	/*<![CDATA[*/

@@ -5,6 +5,6 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
-@SuiteClasses({ GitHubLink.class, InfoZenLink.class, SignIn.class, SideMenuLinks.class, LogoutLink.class })
+@SuiteClasses({ GitHubLinkSelenium.class, InfoZenLinkSelenium.class, SignInSelenium.class, SideMenuLinksSelenium.class, LogoutLinkSelenium.class })
 public class AllTestsSuiteIntegration {
 }

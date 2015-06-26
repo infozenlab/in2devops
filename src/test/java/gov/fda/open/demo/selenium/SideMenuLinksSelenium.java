@@ -13,8 +13,9 @@ import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.springframework.test.context.ContextConfiguration;
 
-public class SideMenuLinks {
+public class SideMenuLinksSelenium {
   private WebDriver driver;
   private String baseUrl;
   private boolean acceptNextAlert = true;
@@ -33,19 +34,19 @@ public class SideMenuLinks {
     driver.findElement(By.linkText("Try the App!")).click();
     driver.findElement(By.xpath("//button[@type='submit']")).click();
     driver.findElement(By.linkText("Try Our App!")).click();
-    driver.findElement(By.linkText("Agilists")).click();
+    driver.findElement(By.linkText("Team Members")).click();
     driver.findElement(By.linkText("Persona Maps")).click();
     driver.findElement(By.linkText("Business Hypothesis")).click();
     driver.findElement(By.linkText("Focus Groups")).click();
     driver.findElement(By.linkText("Digital Services Playbook")).click();
     driver.findElement(By.linkText("Lean/Kanban")).click();
     driver.findElement(By.linkText("Pair Programming")).click();
-    driver.findElement(By.xpath("//a[contains(text(),'DevOps\n						in Practice')]")).click();
-    driver.findElement(By.xpath("//a[contains(text(),'Application\n						Architecture')]")).click();
+    driver.findElement(By.xpath("//a[contains(text(),'DevOps in Practice')]")).click();
+    driver.findElement(By.xpath("//a[contains(text(),'Application Architecture')]")).click();
     driver.findElement(By.linkText("Responsive Mobile")).click();
     driver.findElement(By.linkText("ReadMe.md")).click();
-    driver.findElement(By.linkText("Sonar Time Machine")).click();
-    driver.findElement(By.linkText("Sonar Dashboard")).click();
+    driver.findElement(By.linkText("SonarQube: Time Machine")).click();
+    driver.findElement(By.linkText("SonarQube: Dashboard")).click();
   }
 
   @After

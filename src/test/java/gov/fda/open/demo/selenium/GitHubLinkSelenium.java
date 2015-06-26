@@ -13,8 +13,9 @@ import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.springframework.test.context.ContextConfiguration;
 
-public class InfoZenLink {
+public class GitHubLinkSelenium {
 	private WebDriver driver;
 	private String baseUrl;
 	private boolean acceptNextAlert = true;
@@ -28,9 +29,9 @@ public class InfoZenLink {
 	}
 
 	@Test
-	public void testInfoZenLink() throws Exception {
+	public void testGitHubLink() throws Exception {
 		driver.get(baseUrl + "/fdademo/");
-		driver.findElement(By.linkText("Learn About Us!")).click();
+		driver.findElement(By.linkText("Source Code in GitHub!")).click();
 	}
 
 	@After

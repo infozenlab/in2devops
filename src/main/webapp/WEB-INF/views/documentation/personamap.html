@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-	<title th:text="#{view.index.title}">Welcome!</title>
+	<title th:text="#{view.personamap.title}">Welcome!</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+	<link rel="shortcut icon" href="../resources/images/Infozen_favicon.png" type="image/x-icon" />
 	<link href="../../../resources/css/usptostrap.min.css" rel="stylesheet" media="screen" th:href="@{/resources/css/usptostrap.min.css}"/>
 	<link href="../../../resources/css/main.css" rel="stylesheet" media="screen" th:href="@{/resources/css/main.css}" />
 	<link href="../../../resources/css/jquery-ui.min.css" rel="stylesheet" media="screen" th:href="@{/resources/css/jquery-ui.min.css}" />
@@ -49,18 +50,20 @@ rect:hover {  fill:blue; }
     width:50px;
 }
 .pl-pattern {
-  padding: 30px 0px 30px 30px !important;
+  padding: 30px 55px 30px 30px !important;
   text-align: center !important;
 }
 .desc{
    font-family:Calibri;
    font-size: 25px;
    line-height: 1.2;
+   text-align: left;
 }
 .header{
    font-family:Calibri;
    font-size: 30px;
    font-weight: bold;
+   text-align: center;
 }
 </style>
 <body>
@@ -68,21 +71,22 @@ rect:hover {  fill:blue; }
 	<div class="pl-container">
 		<div th:replace="fragments/sideMenu :: sideMenu">&nbsp;</div>
 		<div class="pl-content">
+
+			<div class="header">
+				<p th:text="#{personamap.title}"></p>
+			</div>
+			<img class="img-responsive center-block"
+				src="../../../resources/images/personamap.jpg"
+				th:src="@{/resources/images/personamap.jpg}"
+				alt="InfoZen Persona Map" width="65%" height="65%" />
 			<div class="pl-pattern">
-				<div class="header">
-						<p th:text="#{personamap.title}"></p>
-				</div>
-				<img src="../../../resources/images/personamap.jpg"
-					th:src="@{/resources/images/personamap.jpg}" alt="InfoZen Persona Map"
-					width="75%" height="75%" /> <br /> <br />
-				<br />
 				<div class="desc">
-					<p th:text="#{personamap.description}"></p>
+					<p th:text="#{personamap.description}" align="left"></p>
 				</div>
 			</div>
 		</div>
 	</div>
-	<div th:replace="fragments/footer :: footer">&copy; 2015 The Static Templates</div>
+<div th:replace="fragments/footer :: footer">&copy; 2015 The Static Templates</div>
 <script type="text/javascript" src="../../../resources/js/uspto-main.min.js" th:src="@{/resources/js/uspto-main.min.js}"></script> 
 <script th:inline="javascript">
 	/*<![CDATA[*/

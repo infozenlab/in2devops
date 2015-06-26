@@ -1,73 +1,130 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-	<title th:text="#{view.index.title}">Welcome!</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-	<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
-	<link href="../../../resources/css/usptostrap.min.css" rel="stylesheet" media="screen" th:href="@{/resources/css/usptostrap.min.css}"/>
-	<link href="../../../resources/css/main.css" rel="stylesheet" media="screen" th:href="@{/resources/css/main.css}" />
-	<link href="../../../resources/css/jquery-ui.min.css" rel="stylesheet" media="screen" th:href="@{/resources/css/jquery-ui.min.css}" />
-	<script src="../../../resources/js/jquery-1.11.1.min.js" th:src="@{/resources/js/jquery-1.11.1.min.js}"></script>
-	<script src="../../../resources/js/bootstrap.min.js" th:src="@{/resources/js/bootstrap.min.js}"></script>
-	<script src="../../../resources/js/jquery-ui.min.js" th:src="@{/resources/js/jquery-ui.min.js}"></script>
+<title th:text="#{view.mobile.title}">Welcome!</title>
+<link rel="shortcut icon" href="../resources/images/Infozen_favicon.png" type="image/x-icon" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+<link href="../../../resources/css/usptostrap.min.css" rel="stylesheet"
+	media="screen" th:href="@{/resources/css/usptostrap.min.css}" />
+<link href="../../../resources/css/main.css" rel="stylesheet"
+	media="screen" th:href="@{/resources/css/main.css}" />
+<link href="../../../resources/css/jquery-ui.min.css" rel="stylesheet"
+	media="screen" th:href="@{/resources/css/jquery-ui.min.css}" />
+<script src="../../../resources/js/jquery-1.11.1.min.js"
+	th:src="@{/resources/js/jquery-1.11.1.min.js}"></script>
+<script src="../../../resources/js/bootstrap.min.js"
+	th:src="@{/resources/js/bootstrap.min.js}"></script>
+<script src="../../../resources/js/jquery-ui.min.js"
+	th:src="@{/resources/js/jquery-ui.min.js}"></script>
 </head>
 <style>
 /* body{ */
 /*     width:1100px; */
 /*     margin:50px auto; */
 /* } */
-.pl-content{
+.pl-content {
 	padding-left: 20px;
 }
-path {  stroke: #fff; }
-path:hover {  opacity:0.9; }
-rect:hover {  fill:blue; }
-.axis {  font: 10px sans-serif; }
-.legend tr{    border-bottom:1px solid grey; }
-.legend tr:first-child{    border-top:1px solid grey; }
 
-.axis path,
-.axis line {
-  fill: none;
-  stroke: #000;
-  shape-rendering: crispEdges;
+path {
+	stroke: #fff;
 }
 
-.x.axis path {  display: none; }
-.legend{
-    margin-bottom:76px;
-    display:inline-block;
-    border-collapse: collapse;
-    border-spacing: 0px;
-}
-.legend, td{
-    padding:4px 5px;
-    vertical-align:bottom;
-}
-.legendFreq, .legendPerc{
-    align:right;
-    width:50px;
+path:hover {
+	opacity: 0.9;
 }
 
+rect:hover {
+	fill: blue;
+}
+
+.axis {
+	font: 10px sans-serif;
+}
+
+.legend tr {
+	border-bottom: 1px solid grey;
+}
+
+.legend tr:first-child {
+	border-top: 1px solid grey;
+}
+
+.axis path, .axis line {
+	fill: none;
+	stroke: #000;
+	shape-rendering: crispEdges;
+}
+
+.x.axis path {
+	display: none;
+}
+
+.legend {
+	margin-bottom: 76px;
+	display: inline-block;
+	border-collapse: collapse;
+	border-spacing: 0px;
+}
+
+.legend, td {
+	padding: 4px 5px;
+	vertical-align: bottom;
+}
+
+.legendFreq, .legendPerc {
+	align: right;
+	width: 50px;
+}
+
+.pl-pattern {
+	padding: 30px 0px 30px 30px !important;
+	text-align: center !important;
+}
+
+.desc {
+	font-family: Calibri;
+	font-size: 25px;
+	line-height: 1.2;
+}
+
+.header {
+	font-family: Calibri;
+	font-size: 30px;
+	font-weight: bold;
+}
 </style>
 <body>
-<div th:replace="fragments/header :: header">&nbsp;</div>
-<div class="pl-container">
+	<div th:replace="fragments/header :: header">&nbsp;</div>
+	<div class="pl-container">
 	<div th:replace="fragments/sideMenu :: sideMenu">&nbsp;</div>
-    <div class="pl-content">
-  		<div class="row">
-  			<img src="../../../resources/images/mobile.png"
-              th:src="@{/resources/images/mobile.png}"
-              alt="InfoZen DevOps" width="75%" height="75%"/>
-  		</div>
-	</div>
-</div>
-<div th:replace="fragments/footer :: footer">&copy; 2015 The Static Templates</div>
-<script type="text/javascript" src="../../../resources/js/uspto-main.min.js" th:src="@{/resources/js/uspto-main.min.js}"></script> 
-<script th:inline="javascript">
-	/*<![CDATA[*/
-	           
-	/*]]>*/
-</script>
+	<div class="pl-content">
+		<div class="pl-pattern">
+			<div class="header">
+				<p th:text="#{mobile.title}"></p>
+			</div>
+			<div class="row">
+				<img class="img-responsive center-block"
+					src="../../../resources/images/mobile1.jpg"
+					th:src="@{/resources/images/mobile1.jpg}" alt="InfoZen Focus Group"
+					width="30%" height="30%" /><br />
+			</div></div>
+			<div class="pl-pattern">
+			<div class="desc">
+				<p th:text="#{mobile.description}" align="left"></p>
+			</div>
+		</div>
+	</div></div>
+	<div th:replace="fragments/footer :: footer">&copy; 2015 The
+		Static Templates</div>
+	<script type="text/javascript"
+		src="../../../resources/js/uspto-main.min.js"
+		th:src="@{/resources/js/uspto-main.min.js}"></script>
+	<script th:inline="javascript">
+		/*<![CDATA[*/
+
+		/*]]>*/
+	</script>
 </body>
 </html>

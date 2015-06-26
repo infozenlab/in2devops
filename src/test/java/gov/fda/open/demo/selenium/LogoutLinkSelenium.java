@@ -13,8 +13,9 @@ import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.springframework.test.context.ContextConfiguration;
 
-public class SignIn {
+public class LogoutLinkSelenium {
 	private WebDriver driver;
 	private String baseUrl;
 	private boolean acceptNextAlert = true;
@@ -28,10 +29,11 @@ public class SignIn {
 	}
 
 	@Test
-	public void testSignIn() throws Exception {
+	public void testLogoutLink() throws Exception {
 		driver.get(baseUrl + "/fdademo/");
-		driver.findElement(By.linkText("Sign in")).click();
+		driver.findElement(By.linkText("Try the App!")).click();
 		driver.findElement(By.xpath("//button[@type='submit']")).click();
+		driver.findElement(By.linkText("Logout")).click();
 	}
 
 	@After

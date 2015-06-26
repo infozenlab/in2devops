@@ -18,15 +18,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.google.common.base.Throwables;
-
 /**
  * Default <b>Spring AOP Advice</b>class to handler Exception {@link Exception}
  * and {@link ServletRequestBindingException}.
  * 
  */
 @ControllerAdvice
-class ExceptionHandler {
+public class ExceptionHandler {
 
     /** The Constant LOG. */
     private static final Logger LOG = LoggerFactory.getLogger(ExceptionHandler.class);
@@ -46,7 +44,7 @@ class ExceptionHandler {
         LOG.error("Unhandled error", exception);
 
         ModelAndView modelAndView = new ModelAndView("error/general");
-        Throwable thowable = Throwables.getRootCause(exception);
+        Throwable thowable = getRootCause(exception);
         modelAndView.addObject("errorMessage", thowable);
         return modelAndView;
     }
@@ -73,4 +71,21 @@ class ExceptionHandler {
         return response;
     }
 
+    /**
+     * Returns the innermost cause of {@code throwable}. The first throwable in a
+     * chain provides context from when the error or exception was initially
+     * detected. Example usage:
+     * 
+     * <pre>
+     *   assertEquals("Unable to assign a customer id",
+     *       Throwables.getRootCause(e).getMessage());
+     * </pre>
+     */
+    public static Throwable getRootCause(Throwable throwable) {
+        Throwable cause;
+        while ((cause = throwable.getCause()) != null) {
+            throwable = cause;
+        }
+        return throwable;
+    }
 }

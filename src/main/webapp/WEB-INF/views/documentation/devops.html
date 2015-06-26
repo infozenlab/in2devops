@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-	<title th:text="#{view.index.title}">Welcome!</title>
+	<title th:text="#{view.devops.title}">Welcome!</title>
+	<link rel="shortcut icon" href="../resources/images/Infozen_favicon.png" type="image/x-icon" />
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
 	<link href="../../../resources/css/usptostrap.min.css" rel="stylesheet" media="screen" th:href="@{/resources/css/usptostrap.min.css}"/>
@@ -78,9 +79,9 @@ rect:hover {
 		<div class="pl-content">
 			<div class="panel" style="padding-left: 50px">
 				<div class="row">
-					<img src="../../../resources/images/devops.png"
+					<img class="img-responsive center-block" src="../../../resources/images/devops.png"
 						th:src="@{/resources/images/devops.png}" alt="InfoZen DevOps"
-						width="75%" height="75%" /> <img
+						width="75%" height="75%" /> <img class="img-responsive"
 						src="../../../resources/images/devopsdesc.png"
 						th:src="@{/resources/images/devopsdesc.png}" alt="InfoZen DevOps"
 						width="75%" height="75%" />

@@ -13,8 +13,9 @@ import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.springframework.test.context.ContextConfiguration;
 
-public class GitHubLink {
+public class SignInSelenium {
 	private WebDriver driver;
 	private String baseUrl;
 	private boolean acceptNextAlert = true;
@@ -28,9 +29,10 @@ public class GitHubLink {
 	}
 
 	@Test
-	public void testGitHubLink() throws Exception {
+	public void testSignIn() throws Exception {
 		driver.get(baseUrl + "/fdademo/");
-		driver.findElement(By.linkText("Source Code in GitHub!")).click();
+		driver.findElement(By.linkText("Sign in")).click();
+		driver.findElement(By.xpath("//button[@type='submit']")).click();
 	}
 
 	@After

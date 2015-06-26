@@ -6,6 +6,8 @@
  */
 package gov.fda.open.demo.web.controller;
 
+import static gov.fda.open.demo.web.ExceptionHandler.getRootCause;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -16,13 +18,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.google.common.base.Throwables;
-
 /**
  * Controller class to handle unknow exceptions.
  */
 @Controller
-class CustomErrorController {
+public class CustomErrorController {
 
     /** The Constant LOG. */
     private static final Logger LOG = LoggerFactory.getLogger(CustomErrorController.class);
@@ -74,7 +74,7 @@ class CustomErrorController {
      */
     private String getExceptionMessage(Throwable throwable, Integer statusCode) {
         if (throwable != null) {
-            return Throwables.getRootCause(throwable).getMessage();
+            return getRootCause(throwable).getMessage();
         }
         HttpStatus httpStatus = HttpStatus.valueOf(statusCode);
         return httpStatus.getReasonPhrase();
