@@ -39,7 +39,7 @@ To install the application in your local repository execute following commands:
     mvn clean install
 ```
 
-<b>Run the project<\b>
+<b>Run the project</b>
 
 
 ```bash
