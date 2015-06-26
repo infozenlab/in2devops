@@ -116,16 +116,17 @@ rect:hover {
 		<div th:replace="fragments/sideMenu :: sideMenu">&nbsp;</div>
 		<div class="pl-content">
 			<div class="panel" style="padding-left: 50px">
-				<h2>
-					InfoZen Prototype URL: <a href="https://fda.identrix.com/">https://fda.identrix.com/</a>
-				</h2>
-				<h2>
+				<b>
+					InfoZen Prototype URL: <a href="http://fda.identrix.com/">http://fda.identrix.com/</a>
+				</b>
+				<br/>
+				<b>
 					<a
 						id="user-content-infozen-github-url-httpsgithubcominfozenlabfdademo"
 						href="https://github.com/infozenlab/fdademo/blob/dev/README.md#infozen-github-url-httpsgithubcominfozenlabfdademo">
 					</a> InfoZen GitHub URL: <a
 						href="https://github.com/infozenlab/fdademo">https://github.com/infozenlab/fdademo</a>
-				</h2>
+				</b>
 				<h1>
 					<a
 						id="user-content-open-fda---spring-mvc-bootstrap-prototype-application-setup"
@@ -181,41 +182,39 @@ rect:hover {
     cd fdademo
     mvn clean install</pre>
 				</div>
-				<h2>
+				<b>
 					<a id="user-content-run-the-project"
 						href="https://github.com/infozenlab/fdademo/blob/dev/README.md#run-the-project"></a>
 					Run the project
-				</h2>
+				</b>
 				<div>
 					<pre>    mvn test tomcat7:run</pre>
 				</div>
-				<h2>
+				<b>
 					<a id="user-content-test-on-the-browser"
 						href="https://github.com/infozenlab/fdademo/blob/dev/README.md#test-on-the-browser"></a>
 					Test on the browser
-				</h2>
+				</b>
 				<pre>
-					<code>http://localhost:8080/fdademo
-</code>
+					<code>http://localhost:8080/fdademo</code>
 				</pre>
 				<p>Note: No additional services are required in order to start
 					the application. No DB configuration is required.</p>
-				<p>Creating a manual deployment</p>
+				<h2>Creating a manual deployment</h2>
 				<div>
 					<pre>    git clone https://github.com/infozenlab/fdademo.git
-    cd fdademo/target
-      cp fdademo.war
-    cd $TOMCAT_HOME/webapps</pre>
+    cd fdademo/target</pre>
+     <p> Copy fdademo.war file </p>
+    <pre>  cd $TOMCAT_HOME/webapps</pre>
 				</div>
 				<p>Paste fdademo.war Start tomcat server</p>
-				<h2>
+				<b>
 					<a id="user-content-test-on-the-browser-1"
 						href="https://github.com/infozenlab/fdademo/blob/dev/README.md#test-on-the-browser-1"></a>
 					Test on the browser
-				</h2>
+				</b>
 				<pre>
-					<code>http://localhost:8080/fdademo
-</code>
+					<code>http://localhost:8080/fdademo</code>
 				</pre>
 				<p>Note: No additional services are required in order to start
 					the application. No DB configuration is required.</p>
@@ -251,14 +250,13 @@ rect:hover {
 							Server</code> follow wizard till server is up and running
 					</li>
 				</ul>
-				<h2>
+				<b>
 					<a id="user-content-test-on-the-browser-2"
 						href="https://github.com/infozenlab/fdademo/blob/dev/README.md#test-on-the-browser-2"></a>
 					Test on the browser
-				</h2>
+				</b>
 				<pre>
-					<code>http://localhost:8080/fdademo
-</code>
+					<code>http://localhost:8080/fdademo</code>
 				</pre>
 				<p>Note: No additional services are required in order to start
 					the application. No DB configuration is required.</p>
