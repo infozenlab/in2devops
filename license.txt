@@ -11,4 +11,3 @@ Where works of the public contributed to this package were given as gratuitous c
 Should any part of this Waiver be deemed invalid or ineffective under applicable law, such partial invalidity or ineffectiveness shall not invalidate the remainder of the Waiver, and then the Waiver shall be preserved to the maximum extent permitted given InfoZen, Inc.'s express Statement of Purpose.
 
 In addition, to the extent the Waiver is so judged, the General Services Administration hereby grants to each affected person a license to use the work worldwide through the Creative Commons 0 (CC0) 1.0 Universal Public Domain Dedication.
-
