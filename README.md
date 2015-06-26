@@ -1,7 +1,6 @@
-InfoZen Prototype URL: https://fda.identrix.com/
-------------------------------------------------
-InfoZen GitHub URL: https://github.com/infozenlab/fdademo
----------------------------------------------------------
+<b>InfoZen Prototype URL: https://fda.identrix.com/</b>
+
+<b>InfoZen GitHub URL: https://github.com/infozenlab/fdademo</b>
 
 openFDA - Infozen Open Source Prototype Setup
 ============================================================
