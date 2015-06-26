@@ -95,7 +95,7 @@ Running Selenium Test on Mozilla Firefox
 ----------------------------------------
 ```bash
     cd fdademo
-    mvn clean install -P integration-tests
+    mvn clean site -P integration-tests
 ```
 
 750 Word Brief Narrative
