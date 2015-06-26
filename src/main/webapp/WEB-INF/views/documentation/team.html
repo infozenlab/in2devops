@@ -70,11 +70,7 @@ rect:hover {  fill:blue; }
 <div th:replace="fragments/header :: header">&nbsp;</div>
 	<div class="pl-container">
 		<div th:replace="fragments/sideMenu :: sideMenu">&nbsp;</div>
-		<div class="pl-content">
-
-			<div class="header">
-				<p th:text="#{team.title}"></p>
-			</div>
+		<div class="pl-content" style="padding-top :100px">
 			<img class="img-responsive center-block"
 				src="../../../resources/images/team.jpg"
 				th:src="@{/resources/images/team.jpg}"
