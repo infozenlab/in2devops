@@ -26,7 +26,7 @@ Pre-requisites
 Access Application from Private Cloud
 -------------------------------------
 
-Deployed code and Live application can be accessed anytime at http://fda.identrix.com
+Deployed, Live, application can be accessed anytime at http://fda.identrix.com
 
 Installation
 ------------
@@ -39,32 +39,34 @@ To install the application in your local repository execute following commands:
     mvn clean install
 ```
 
-Run the project
-----------------
+<b>Run the project<\b>
+
 
 ```bash
 	mvn test tomcat7:run
 ```
 
-Test on the browser
--------------------
+<b>Test on the browser</b>
+
 
 	http://localhost:8080/fdademo
 
 Note: No additional services are required in order to start the application. No DB configuration is required.
 
 Creating a manual deployment
+----------------------------
 ```bash
     git clone https://github.com/infozenlab/fdademo.git
     cd fdademo/target
-	  cp fdademo.war
+```    
+Copy fdademo.war file
+```bash
     cd $TOMCAT_HOME/webapps
 ```
-  Paste fdademo.war
-  Start tomcat server
+Paste fdademo.war
+Start tomcat server
 
-Test on the browser
--------------------
+<b>Test Manual Deployment on the browser</b>
 
 	http://localhost:8080/fdademo
 
@@ -75,7 +77,7 @@ Creating a new project in Eclipse
 
 * Import project URI by `Import ... > Projects from Git > Clone URI`
 * Paste https://github.com/infozenlab/fdademo.git into `URI`
-* Select `master` branch
+* Select `dev` branch
 * Confirm directory and remote name `origin`
 * Import as general project
 * Leave the default `fdademo` as project name
@@ -84,8 +86,7 @@ Creating a new project in Eclipse
 * Right-Click on project and `Configure > Convert to Maven Project`
 * Right-Click on project `Run as > Run on Server` follow wizard till server is up and running
 
-Test on the browser
--------------------
+<b>Test on the browser</b>
 
 	http://localhost:8080/fdademo
 
