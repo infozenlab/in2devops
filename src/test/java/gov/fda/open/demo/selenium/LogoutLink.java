@@ -33,7 +33,6 @@ public class LogoutLink {
 		driver.findElement(By.linkText("Try the App!")).click();
 		driver.findElement(By.xpath("//button[@type='submit']")).click();
 		driver.findElement(By.linkText("Logout")).click();
-		driver.findElement(By.linkText("Logout")).click();
 	}
 
 	@After
