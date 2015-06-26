@@ -3,7 +3,7 @@ InfoZen Prototype URL: https://fda.identrix.com/
 InfoZen GitHub URL: https://github.com/infozenlab/fdademo
 ---------------------------------------------------------
 
-openFDA - Spring MVC, Bootstrap Prototype Application Setup
+openFDA - Infozen Open Source Prototype Setup
 ============================================================
 
 Summary
