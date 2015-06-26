@@ -66,7 +66,7 @@ class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().requireCsrfProtectionMatcher(csrfMatcher()).and().formLogin().loginPage("/signin")
                 .loginProcessingUrl("/j_spring_security_check").usernameParameter("j_username")
                 .passwordParameter("j_password").failureHandler(authenticationFailureHandler()).and()
-                .logout().logoutUrl("/logout").and().authorizeRequests()
+                .logout().logoutUrl("/logout").logoutSuccessUrl("/").and().authorizeRequests()
                 // Everybody has access to this URL "anonymous"
                 .antMatchers("/", "/signin", "/signup", "/error", "/unknownerror").permitAll()
                 .antMatchers("/**").authenticated()

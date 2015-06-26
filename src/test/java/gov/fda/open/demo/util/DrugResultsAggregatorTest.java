@@ -60,8 +60,6 @@ public class DrugResultsAggregatorTest {
 
 		reactions = aggregateResults.get(DateUtil.toDate("yyyyMMdd", "20140401"));
 		assertTrue(reactions.size() > 0);
-
-		printResult(aggregateResults);
 	}
 	
 	/**
@@ -76,7 +74,7 @@ public class DrugResultsAggregatorTest {
 		// Verify
 		Map<Date, Map<String, Integer>> aggregateResults = drugResultAggregator.getResults();
 				
-		printResult(aggregateResults);
+		assertTrue(aggregateResults.size() > 0);
 	}
 	
 	/**
@@ -91,7 +89,7 @@ public class DrugResultsAggregatorTest {
 		// Verify
 		Map<Date, Map<String, Integer>> aggregateResults = drugResultAggregator.getResults();
 				
-		printResult(aggregateResults);
+		assertTrue(aggregateResults.size() > 0);
 	}
 
 	/**
@@ -113,21 +111,7 @@ public class DrugResultsAggregatorTest {
 		countries = aggregateResults.get(DateUtil.toDate("yyyyMMdd", "20140401"));
 		assertTrue(countries.size() > 0);
 
-		printResult(aggregateResults);
 	}
 
-	/**
-	 * Prints the result.
-	 *
-	 * @param aggregateResults the aggregate results
-	 */
-	private void printResult(Map<Date, Map<String, Integer>> aggregateResults) {
-		for (Date date : aggregateResults.keySet()) {
-			System.out.println(" Date -- > " + date);
-			Map<String, Integer> aggregateCnts = aggregateResults.get(date);
-			for (String country : aggregateCnts.keySet()) {
-				System.out.format("%-10s %-25s %d \n", "   ", country, aggregateCnts.get(country));
-			}
-		}
-	}
+
 }

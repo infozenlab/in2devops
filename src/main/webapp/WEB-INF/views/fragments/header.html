@@ -22,8 +22,8 @@
                     <a href="/signin" th:href="@{/signin}">Sign in</a>
                 </li>
                 <li th:if="${#authorization.expression('isAuthenticated()')}">
-                    <a href="/logout" th:href="@{/}" onclick="$('#form').submit();">Logout</a>
-                    <form style="visibility: hidden" id="form" method="post" action="#" th:action="@{/logout}"></form>
+                    <a href="javascript:void(0);" onclick="$('#logoutform').submit();">Logout</a>
+                    <form style="visibility: hidden" id="logoutform" method="post" action="#" th:action="@{/logout}"></form>
                 </li>
             </ul>
         </div>

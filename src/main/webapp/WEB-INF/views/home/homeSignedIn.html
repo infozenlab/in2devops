@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title th:text="#{view.index.title}">Welcome!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link href="../../../resources/css/main.css" rel="stylesheet" media="screen" th:href="@{/resources/css/main.css}" />
     <link href="../../../resources/css/jquery-ui.min.css" rel="stylesheet" media="screen" th:href="@{/resources/css/jquery-ui.min.css}" />
@@ -12,8 +13,15 @@
     <script src="../../../resources/js/jquery.blockui.min.js" th:src="@{/resources/js/jquery.blockui.min.js}"></script>
 </head>
 <style>
+svg{
+	vertical-align: top;
+}
 .pl-content{
         padding-left: 20px;
+}
+table{
+	vertical-align: top !important;
+	padding-top: 60px !important; 
 }
 path {  stroke: #fff; }
 path:hover {  opacity:0.9; }
@@ -47,25 +55,56 @@ rect:hover {  fill:blue; }
 .drugInput{
 	height: 31px !important;
 }
+.fields {
+  padding: 30px 30px 35px 30px !important;
+  margin-bottom: -15px !important;
+}
+.directions {
+  padding: 0px 30px 10px 30px !important;
+}
+.pie{
+	padding-top: 40px !important;
+}
+.highlight {
+    font-weight: 900;
+    font-size: 105%;
+  }
+#dashboard{
+	padding-top: -50px !important;
+}
 </style>
 <body>
 <div th:replace="fragments/header :: header">&nbsp;</div>
 <div class="pl-container">
         <div th:replace="fragments/sideMenu :: sideMenu">&nbsp;</div>
+    <div  class="pl-content" style="padding-top: 30px">
+    	<div>
+   			<div class="pl-pattern directions" style="background-color: #efefef; padding-top: 15px;  margin-bottom: -60px;">
+       				<h6>In order to identify a significant trend in the <b>Adverse Drug Events</b> reported from all across the world, we have created multiple search criterias for a given drug name,
+       				within a date range and maximum search limit. Below are the summary types currently supported:</h6>
+       				<ol class="dl-horizontal">
+						<li><b>By Country :</b> &nbsp; Names of different countries.</li> 
+						<li><b>By Gender :</b> &nbsp; Male, Female &amp; Unknown</li>
+						<li><b>By Sender or Receiver Type : </b>&nbsp; Pharmaceutical Company, Regulatory Authority, Health Professional, Other, etc..</li>
+					</ol>
+			</div>
+		</div>	
+   	</div>            
     <div class="pl-content">
     <!-- /* Handle the flash message */-->
     <th:block th:if="${message != null}">
         <!-- /* The message code is returned from the @Controller */ -->
         <div th:replace="fragments/alert :: alert (type=${#strings.toLowerCase(message.type)}, message=#{${message.message}(${#authentication.name})})">&nbsp;</div>
     </th:block>
+<div class="pl-pattern fields">
     <form id="updateGraphics" action="updateGraphics">
     	<fieldset>
-        	<div class="row" style="padding-top: 20px; padding-left: 20px">
-            	<div class="ui-widget">
+        	<div class="row" >
+            	<div>
             		<div class="col-sm-3">
-            			<div class="row">
-	                		<div class="col-sm-10">
-	                			<label for="type">Summary Type:</label>
+            			<div class="row ui-widget">
+            				<div class="col-sm-10">
+	                			<label for="type" th:text="#{homesignedin.openfda.summarytype}">Summary Type:</label>
 	                		</div>
 	                	</div>
 	                	<div class="row">
@@ -83,9 +122,9 @@ rect:hover {  fill:blue; }
 	                    </div>
 	                </div>
 	                <div class="col-sm-2">
-            			<div class="row">
+            			<div class="row ui-widget">
 	                		<div class="col-sm-10">
-	                			<label for="type">Range:</label>
+	                			<label for="type" th:text="#{homesignedin.openfda.range}">Range:</label>
 	                		</div>
 	                	</div>
 	                	<div class="row">
@@ -103,9 +142,9 @@ rect:hover {  fill:blue; }
 	                    </div>
 	                </div>
 	                 <div class="col-sm-2">
-            			<div class="row">
+            			<div class="row ui-widget">
 	                		<div class="col-sm-10">
-	                			<label for="type">Max Results:</label>
+	                			<label for="type" th:text="#{homesignedin.openfda.maxresults}">Max Results:</label>
 	                		</div>
 	                	</div>
 	                	<div class="row">
@@ -125,17 +164,17 @@ rect:hover {  fill:blue; }
 	                    </div>
 	                </div>
 	                
-	                <div class="col-sm-4">
-            			<div class="row">
+	                <div class="col-sm-5">
+            			<div class="row ui-widget">
             				<div class="col-sm-6">
-	                			<label for="drugName">Enter Drug Name: </label>
+	                			<label for="drugName" th:text="#{homesignedin.openfda.drugname}">Enter Drug Name: </label>
 	                		</div>
 	                	</div>
 	                	<div class="row">
 	                		<div class="col-sm-4">
 	                			<input class="drugInput" id="drugName" name="drugName" required="true" type="text" title="Start typing any Drug name and pick from the list!"/>
 	                		</div>
-	                		<div class="col-sm-7">
+	                		<div class="col-sm-8">
 	                            <button type="submit" id="postAnnouncement"
 	                        		class="btn btn-primary pull-right" title="Hover over graph to see it Change!">View Results</button>
 	                        </div> 
@@ -146,7 +185,8 @@ rect:hover {  fill:blue; }
            	<input class="hidden" id="endDate" name="endDate"/>
         </fieldset>
 	</form>
-    <div id='dashboard' style="padding-top: 25px;"></div>
+</div>
+    <div id='dashboard' style="padding-left: 25px"></div>
 </div>
 </div>
 <div th:replace="fragments/footer :: footer">&copy; 2015 The Static Templates</div>
@@ -226,30 +266,6 @@ function getMedEvents(data) {
         });
 }
 
-var nowTemp = new Date();
-    var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
-
-    var checkin = $('#dpd1').datepicker({
-//     onRender: function(date) {
-//     return date.valueOf() < now.valueOf() ? 'disabled' : '';
-//     }
-    }).on('changeDate', function(ev) {
-    if (ev.date.valueOf() > checkout.date.valueOf()) {
-    var newDate = new Date(ev.date)
-    newDate.setDate(newDate.getDate() + 1);
-    checkout.setValue(newDate);
-    }
-    checkin.hide();
-    $('#dpd2')[0].focus();
-    }).data('datepicker');
-    var checkout = $('#dpd2').datepicker({
-//     onRender: function(date) {
-//     return date.valueOf() <= checkin.date.valueOf() ? 'disabled' : '';
-//     }
-    }).on('changeDate', function(ev) {
-    checkout.hide();
-    }).data('datepicker');
-
         $( "#drugName" ).autocomplete({
                   delay: 500,
                   autoFocus: true,
@@ -268,14 +284,9 @@ var nowTemp = new Date();
                 });
 
 
-var theColors =  ["CD4A4A","CC6666","BC5D58","FF5349","FD5E53","FD7C6E","FDBCB4","FF6E4A","FFA089","EA7E5D","B4674D","A5694F","FF7538","FF7F49","DD9475","FF8243",
-                   "FFA474","9F8170","CD9575","EFCDB8","D68A59","DEAA88","FAA76C","FFCFAB","FFBD88","FDD9B5","FFA343","EFDBC5","FFB653","E7C697","8A795D","FAE7B5",
-                   "FFCF48","FCD975","FDDB6D","FCE883","F0E891","ECEABE","BAB86C","FDFC74","FDFC74","FFFF99","C5E384","B2EC5D","87A96B","A8E4A0","1DF914","76FF7A",
-                   "71BC78","6DAE81","9FE2BF","1CAC78","30BA8F","45CEA2","3BB08F","1CD3A2","17806D","158078","1FCECB","78DBE2","77DDE7","80DAEB","414A4C","199EBD",
-                   "1CA9C9","1DACD6","9ACEEB","1A4876","1974D2","2B6CC4","1F75FE","C5D0E6","B0B7C6","5D76CB","A2ADD0","979AAA","ADADD6","7366BD","7442C8","7851A9",
-                   "9D81BA","926EAE","CDA4DE","8F509D","C364C5","FB7EFD","FC74FD","8E4585","FF1DCE","FF1DCE","FF48D0","E6A8D7","C0448F","6E5160","DD4492","FF43A4",
-                   "F664AF","FCB4D5","FFBCD9","F75394","FFAACC","E3256B","FDD7E4","CA3767","DE5D83","FC89AC","F780A1","C8385A","EE204D","FF496C","EF98AA","FC6C85",
-                   "FC2847","FF9BAA","CB4154","EDEDED","DBD7D2","CDC5C2","95918C"];
+        var theColors =  ["#00a2a2", "#ff0000", "#ddff00", "#00a200", "#ffa200", "#510051", "#bb8e68", "#005dff", "#ff00dd", "#b2e3e3", 
+                          "#810000", "#66c766", "#ffd07f", "#be4dff", "#664428", "#FFFF66", "#192947", "#ffa5f3", "#c5b2c5", "#400040", 
+                          "#ff6666", "#ceb428", "#a8a8a8", "#545454", "#667084", "#B5FF43", "#364C14", "#8992f0", "#D7D7D7"];
 
 function GetHeaders(obj) {
     var cols = new Array();
@@ -304,7 +315,7 @@ function dashboard(id, fData){
         var symptomColors = {};
         //generate key/value pairts for symptomColors
         for (var i = 0; i < arrayLength; i++) {
-                symptomColors[theReactions[i]] = "#" + theColors[Math.floor(Math.random()*theColors.length)];
+        	symptomColors[theReactions[i]] = theColors[i];
         }
 
         var barColor = 'steelblue';
@@ -356,8 +367,8 @@ function dashboard(id, fData){
             .attr("width", x.rangeBand())
             .attr("height", function(d) { return hGDim.h - y(d[1]); })
             .attr('fill',barColor)
-            .on("mouseover",mouseover)// mouseover is defined beNAUSEA.
-            .on("mouseout",mouseout);// mouseout is defined beNAUSEA.
+            .on("mouseover",mouseover)// mouseover is defined below.
+            .on("mouseout",mouseout);// mouseout is defined below.
 
         //Create the frequency labels above the rectangles.
         bars.append("text").text(function(d){ return d3.format(",")(d[1])})
@@ -367,8 +378,17 @@ function dashboard(id, fData){
 
         function mouseover(d){  // utility function to be called on mouseover.
             // filter for selected state.
-            var st = fData.filter(function(s){ return s.date == d[0];})[0],
-                nD = d3.keys(st.frequency).map(function(s){ return {type:s, freq:st.frequency[s]};});
+        	var st = fData.filter(function(s){ 
+            	return s.date == d[0];})[0],
+                nD = d3.keys(st.frequency).map(function(s){ 
+                	var fff = st.frequency[s];
+                	if (!(fff == 0)){
+                		$("#"+s).addClass("highlight");
+                		if (s == "COUNTRY NOT SPECIFIED"){
+                			$("#CCNNSS").addClass("highlight");
+                		}
+                	}
+                	return {type:s, freq:st.frequency[s]};});
 
             // call update functions of pie-chart and legend.
             pC.update(nD);
@@ -379,6 +399,7 @@ function dashboard(id, fData){
             // reset the pie-chart and legend.
             pC.update(tF);
             leg.update(tF);
+            $(".categoryRow").removeClass("highlight");
         }
 
         // create function to update the bars. This will be used by pie-chart.
@@ -410,7 +431,7 @@ function dashboard(id, fData){
         pieDim.r = Math.min(pieDim.w, pieDim.h) / 2;
 
         // create svg for pie chart.
-        var piesvg = d3.select(id).append("svg")
+        var piesvg = d3.select(id).append("svg").attr("class", "pie")
             .attr("width", pieDim.w).attr("height", pieDim.h + 30).append("g")
             .attr("transform", "translate("+pieDim.w/2+","+pieDim.h/2+")");
 
@@ -434,6 +455,15 @@ function dashboard(id, fData){
         }
         // Utility function to be called on mouseover a pie slice.
         function mouseover(d){
+        	$(".categoryRow").each(function(){
+        		var ddt = d.data.type;
+        		if (ddt == "COUNTRY NOT SPECIFIED"){
+        			ddt = "CCNNSS";
+        		}
+        		if($(this).attr("id") == ddt){
+        			$(this).addClass("highlight");
+        		}
+        	})
             // call the update function of histogram with new data.
             hG.update(fData.map(function(v){
             	var temp = v.frequency[d.data.type];
@@ -444,6 +474,9 @@ function dashboard(id, fData){
         }
         //Utility function to be called on mouseout a pie slice.
         function mouseout(d){
+        	$(".categoryRow").each(function(){
+        			$(this).removeClass("highlight");
+        	})
             // call the update function of histogram with all data.
             hG.update(fData.map(function(v){
                 return [v.date,v.total];}), barColor);
@@ -466,7 +499,10 @@ function dashboard(id, fData){
         var legend = d3.select(id).append("table").attr('class','legend');
 
         // create one row per segment.
-        var tr = legend.append("tbody").selectAll("tr").data(lD).enter().append("tr");
+        var tr = legend.append("tbody").selectAll("tr").data(lD).enter().append("tr")
+        		.attr("id", function(d){ return d.type;})
+	        	.attr("class", "categoryRow")
+	        	.on("click", mouseover9);
 
         // create the first column for each segment.
         tr.append("td").append("svg").attr("width", '16').attr("height", '16').append("rect")
@@ -500,6 +536,25 @@ function getLegend(d,aD){ // Utility function to compute percentage.
 return d3.format("%")(d.freq/d3.sum(aD.map(function(v){ return v.freq; })));
 }
 
+function mouseover9 (){
+	if ($(this).hasClass("highlight")){
+		$( this ).toggleClass( "highlight" );
+		$("#category").val(null);
+		
+	}
+	else{ 
+		var selectedId = $(this).attr("id");
+		$(".categoryRow").each(function(){
+			if ($(this).hasClass("highlight")){
+				$( this ).toggleClass( "highlight" );
+			}
+		});
+		$( this ).toggleClass( "highlight" );
+		$("#category").val(selectedId);
+		}
+	
+}
+
 return leg;
 }
 
@@ -515,7 +570,10 @@ var sF = fData.map(function(d){return [d.date,d.total];});
 var hG = histoGram(sF), // create the histogram.
 pC = pieChart(tF), // create the pie-chart.
 leg= legend(tF);  // create the legend.
+$("[id='COUNTRY NOT SPECIFIED']").attr("id", "CCNNSS");
 }
+
+
 
 /*]]>*/
 </script>

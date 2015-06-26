@@ -4,7 +4,7 @@
     <link href="../../../resources/css/bootstrap.min.css" rel="stylesheet" media="screen" th:href="@{/resources/css/bootstrap.min.css}"/>
 </head>
 <body>
-    <div class="navbar navbar-default navbar-fixed-bottom" th:fragment="footer">
+    <div class="navbar navbar-default" style="position: fixed; left: 0; right: 0; bottom: 0;" th:fragment="footer">
 	    <div class="container">
 	    	<p class="navbar-text pull-left" th:text="${'&copy; ' +  #dates.year(#dates.createNow())} + ' openFDA Demo (Med Events App) '" >
 	        </p>

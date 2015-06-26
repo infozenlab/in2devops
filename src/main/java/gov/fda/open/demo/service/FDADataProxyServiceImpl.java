@@ -64,11 +64,11 @@ public class FDADataProxyServiceImpl implements FDADataProxyService {
     private String uri;
 
     /** The app key. */
-    @Value("${app_key:HLWyWIHnwvkPqiYm1wWdx0NcZH9ghBKzCBTeSjJG}")
+    @Value("${fdadataset.app_key:HLWyWIHnwvkPqiYm1wWdx0NcZH9ghBKzCBTeSjJG}")
     private String appKey;
 
     /** The limit. */
-    @Value("${limitPerRequest:100}")
+    @Value("${fdadataset.limitPerRequest:100}")
     private int limit;
 
     /** The template. */
@@ -78,6 +78,7 @@ public class FDADataProxyServiceImpl implements FDADataProxyService {
     /** The drug names. */
     private static String[] drugNames = null;
 
+    /** Json reader */
     private ObjectMapper mapper = new ObjectMapper();
 
     /**
