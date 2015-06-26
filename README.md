@@ -1,4 +1,4 @@
-<b>InfoZen Prototype URL: https://fda.identrix.com/</b>
+<b>InfoZen Prototype URL: http://fda.identrix.com/</b>
 
 <b>InfoZen GitHub URL: https://github.com/infozenlab/fdademo</b>
 
