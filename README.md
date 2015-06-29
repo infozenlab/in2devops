@@ -93,6 +93,9 @@ Note: No additional services are required in order to start the application. No 
 
 Running Selenium Test on Mozilla Firefox
 ----------------------------------------
+<b>Pre-requisites</b>
+* Mozilla Firefox 37+
+
 ```bash
     cd fdademo
     mvn clean install -P integration-tests
