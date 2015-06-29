@@ -7,13 +7,14 @@
 package gov.fda.open.demo.model.request;
 
 import gov.fda.open.demo.model.enums.SummaryType;
+import gov.fda.open.demo.service.FDADataProxyService;
 import gov.fda.open.demo.util.DateUtil;
 
 import java.util.Date;
 
 /**
- * Input request class for {#link
- * {@link FDADataProxyService#getDrugAdverseSummary(GetDrugAdverseSummaryRequest)}
+ * Input request class for
+ * @see FDADataProxyService#getDrugAdverseSummary(GetDrugAdverseSummaryRequest)
  * API
  * 
  */

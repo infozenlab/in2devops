@@ -6,7 +6,9 @@
  */
 package gov.fda.open.demo.util;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+import gov.fda.open.demo.error.ApplicationException;
 
 import java.util.Arrays;
 
@@ -22,19 +24,25 @@ public class StringUtilTest {
 	/**
 	 * Sets the up.
 	 *
-	 * @throws Exception the exception
+	 * @throws ApplicationException
+	 *             the exception
 	 */
 	@Before
-	public void setUp() throws Exception {
+	public void setUp() throws ApplicationException {
+
+		// Nothing to do since nothing to setup
 	}
 
 	/**
 	 * Tear down.
 	 *
-	 * @throws Exception the exception
+	 * @throws ApplicationException
+	 *             the exception
 	 */
 	@After
-	public void tearDown() throws Exception {
+	public void tearDown() throws ApplicationException {
+
+		// Nothing to do since nothing to teardown
 	}
 
 	/**
@@ -52,7 +60,7 @@ public class StringUtilTest {
 	@Test
 	public void testEscapeQueryTerm() {
 		assertNull(StringUtil.escapeQueryTerm(null));
-		assertEquals("\"Test+123\"", StringUtil. escapeQueryTerm("Test 123"));
+		assertEquals("\"Test+123\"", StringUtil.escapeQueryTerm("Test 123"));
 	}
 
 	/**
@@ -60,10 +68,11 @@ public class StringUtilTest {
 	 */
 	@Test
 	public void testFindFirst() {
-		String[] values = {"Test", "JUnit", "Exception", "API", "REST", "Testing"};
-		
+		String[] values = { "Test", "JUnit", "Exception", "API", "REST",
+				"Testing" };
+
 		Arrays.sort(values);
-		
+
 		assertEquals(-1, StringUtil.findFirst(values, "t"));
 		assertEquals(-1, StringUtil.findFirst(values, "TE"));
 		assertEquals(4, StringUtil.findFirst(values, "Test"));
@@ -71,10 +80,10 @@ public class StringUtilTest {
 		assertEquals(1, StringUtil.findFirst(values, "Excep"));
 		assertEquals(0, StringUtil.findFirst(values, "API"));
 		assertEquals(5, StringUtil.findFirst(values, "Testing"));
-		
+
 		String[] values1 = {};
 		assertEquals(-1, StringUtil.findFirst(values1, "t"));
-		
+
 	}
 
 }

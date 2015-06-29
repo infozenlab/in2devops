@@ -14,65 +14,133 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
+import gov.fda.open.demo.config.LoggingRule;
 import gov.fda.open.demo.config.WebSecurityConfigurationAware;
+import gov.fda.open.demo.error.ApplicationException;
+import gov.fda.open.demo.model.enums.LogLevel;
+import gov.fda.open.demo.service.loggable.Loggable;
+import gov.fda.open.demo.web.ExceptionHandler;
 
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.TestRule;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.MediaType;
 
 /**
- * JUnit test class for {@link HomeController}
- * 
+ * JUnit test class for {@link HomeController}.
  */
 public class HomeControllerTest extends WebSecurityConfigurationAware {
+
+	/** The Constant LOG. */
+	private static final Logger LOG = LoggerFactory
+			.getLogger(HomeController.class);
+
+	/** The logging rule */
+	@Rule
+	public TestRule loggingRule = new LoggingRule(ExceptionHandler.class);
 
 	/**
 	 * Test index.
 	 *
-	 * @throws Exception the exception
+	 * @throws Exception
+	 *             the exception
 	 */
 	@Test
-	public void testIndex() throws Exception {
-		mockMvc.perform(get("/"))
-				.andExpect(view().name("home/homeNotSignedIn"))
-				.andExpect(
-						content().string(
-								allOf(containsString("<title>Login into MedEvent Application</title>"),
-										containsString("<a href=\"/signin\">Sign in</a>"))));
+	public void testIndex() throws ApplicationException {
+		try {
+			mockMvc.perform(get("/"))
+					.andExpect(view().name("home/homeNotSignedIn"))
+					.andExpect(
+							content()
+									.string(allOf(
+											containsString("<title>Login into MedEvent Application</title>"),
+											containsString("<a href=\"/signin\">Sign in</a>"))));
+		} catch (Exception e) {
+			LOG.error("Error while running HomeController Test", e);
+		}
 	}
 
 	/**
 	 * Test get adverse summary.
 	 *
-	 * @throws Exception the exception
+	 * @throws ApplicationException
+	 *             the exception
 	 */
 	@Test
-	public void testGetAdverseSummary() throws Exception {
-		mockMvc.perform(get("/drug/summary").with(user("user")))
-		.andExpect(status().isBadRequest())
-		.andExpect(content().contentType(MediaType.APPLICATION_JSON))
-		.andExpect(jsonPath("$.success").value(false));
-		
-		mockMvc.perform(get("/drug/summary").with(user("user")).param("drugName", "ASPRIN"))
-			.andExpect(status().isOk())
-			.andExpect(content().contentType(MediaType.APPLICATION_JSON))
-			.andExpect(jsonPath("$.success").value(true));
+	public void testGetAdverseSummary() throws ApplicationException {
+		try {
+			mockMvc.perform(
+					get("/drug/summary").with(user("user")).param("drugName",
+							"ASPRIN"))
+					.andExpect(status().isOk())
+					.andExpect(
+							content().contentType(MediaType.APPLICATION_JSON))
+					.andExpect(jsonPath("$.success").value(true));
+		} catch (Exception e) {
+			LOG.error("Error while running HomeController Test", e);
+		}
+	}
+
+	/**
+	 * Test get adver summary bad request.
+	 *
+	 * @throws ApplicationException
+	 *             the exception
+	 */
+	@Test
+	@Loggable(LogLevel.OFF)
+	public void testGetAdverSummaryBadRequest() throws ApplicationException {
+		try {
+			mockMvc.perform(get("/drug/summary").with(user("user")))
+					.andExpect(status().isBadRequest())
+					.andExpect(
+							content().contentType(MediaType.APPLICATION_JSON))
+					.andExpect(jsonPath("$.success").value(false));
+		} catch (Exception e) {
+			LOG.error("Error while running HomeController Test", e);
+		}
 	}
 
 	/**
 	 * Test get drug names.
 	 *
-	 * @throws Exception the exception
+	 * @throws ApplicationException
+	 *             the exception
 	 */
 	@Test
-	public void testGetDrugNames() throws Exception {
-		mockMvc.perform(get("/drug/names").with(user("user")))
-			.andExpect(status().isBadRequest())
-			.andExpect(content().contentType(MediaType.APPLICATION_JSON))
-			.andExpect(jsonPath("$.success").value(false));
-		
-		mockMvc.perform(get("/drug/names").with(user("user")).param("drugName", "ASPRIN"))
-			.andExpect(status().isOk())
-			.andExpect(content().contentType(MediaType.APPLICATION_JSON));
-    }
+	public void testGetDrugNames() throws ApplicationException {
+		try {
+			mockMvc.perform(
+					get("/drug/names").with(user("user")).param("drugName",
+							"ASPRIN"))
+					.andExpect(status().isOk())
+					.andExpect(
+							content().contentType(MediaType.APPLICATION_JSON));
+		} catch (Exception e) {
+			LOG.error("Error while running HomeController Test", e);
+		}
+	}
+
+	/**
+	 * Test get drug names bad request.
+	 *
+	 * @throws ApplicationException
+	 *             the exception
+	 */
+	@Test
+	@Loggable(LogLevel.OFF)
+	public void testGetDrugNamesBadRequest() throws ApplicationException {
+		try {
+			mockMvc.perform(get("/drug/names").with(user("user")))
+					.andExpect(status().isBadRequest())
+					.andExpect(
+							content().contentType(MediaType.APPLICATION_JSON))
+					.andExpect(jsonPath("$.success").value(false));
+		} catch (Exception e) {
+			LOG.error("Error while running HomeController Test", e);
+		}
+	}
 
 }

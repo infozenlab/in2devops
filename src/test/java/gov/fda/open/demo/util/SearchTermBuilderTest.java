@@ -7,6 +7,7 @@
 package gov.fda.open.demo.util;
 
 import static org.junit.Assert.assertEquals;
+import gov.fda.open.demo.error.ApplicationException;
 
 import org.junit.After;
 import org.junit.Before;
@@ -23,22 +24,24 @@ public class SearchTermBuilderTest {
 	/**
 	 * Sets the up.
 	 *
-	 * @throws Exception
+	 * @throws ApplicationException
 	 *             the exception
 	 */
 	@Before
-	public void setUp() throws Exception {
+	public void setUp() throws ApplicationException {
 		searchTermBuilder = new SearchTermBuilder();
 	}
 
 	/**
 	 * Tear down.
 	 *
-	 * @throws Exception
+	 * @throws ApplicationException
 	 *             the exception
 	 */
 	@After
-	public void tearDown() throws Exception {
+	public void tearDown() throws ApplicationException {
+		
+		// Nothing to do since nothing to teardown
 	}
 
 	/**

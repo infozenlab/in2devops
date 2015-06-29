@@ -32,10 +32,7 @@ public class ExceptionHandler {
     /**
      * Handle exceptions thrown by handlers.
      *
-     * @param exception
-     *            the exception
-     * @param request
-     *            the request
+     * @param exception the exception
      * @return the model and view
      */
     @ResponseStatus(HttpStatus.BAD_REQUEST)
@@ -52,10 +49,7 @@ public class ExceptionHandler {
     /**
      * Missing request parameter.
      *
-     * @param exception
-     *            the exception
-     * @param request
-     *            the request
+     * @param exception  the exception
      * @return the map
      */
     @ResponseStatus(HttpStatus.BAD_REQUEST)
@@ -80,6 +74,9 @@ public class ExceptionHandler {
      *   assertEquals("Unable to assign a customer id",
      *       Throwables.getRootCause(e).getMessage());
      * </pre>
+     * 
+     * @param throwable actual exception
+     * @return Root throwable
      */
     public static Throwable getRootCause(Throwable throwable) {
         Throwable cause;

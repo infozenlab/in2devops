@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title th:text="#{view.javadoc.title}">Welcome!</title>
+<link rel="shortcut icon"
+	href="../../../resources/images/Infozen_favicon.png"
+	type="image/x-icon" th:href="@{/resources/images/Infozen_favicon.png}" />
+<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+<link href="../../../resources/css/usptostrap.min.css" rel="stylesheet"
+	media="screen" th:href="@{/resources/css/usptostrap.min.css}" />
+<link href="../../../resources/css/documents.css" rel="stylesheet"
+	media="screen" th:href="@{/resources/css/documents.css}" />
+<link href="../../../resources/css/main.css" rel="stylesheet"
+	media="screen" th:href="@{/resources/css/main.css}" />
+<link href="../../../resources/css/jquery-ui.min.css" rel="stylesheet"
+	media="screen" th:href="@{/resources/css/jquery-ui.min.css}" />
+<script src="../../../resources/js/jquery-1.11.1.min.js"
+	th:src="@{/resources/js/jquery-1.11.1.min.js}"></script>
+<script src="../../../resources/js/bootstrap.min.js"
+	th:src="@{/resources/js/bootstrap.min.js}"></script>
+<script src="../../../resources/js/jquery-ui.min.js"
+	th:src="@{/resources/js/jquery-ui.min.js}"></script>
+</head>
+<body>
+	<div th:replace="fragments/header :: header">&nbsp;</div>
+	<div class="pl-container">
+		<div th:replace="fragments/sideMenu :: sideMenu">&nbsp;</div>
+		<div class="pl-content">
+			<div class="panel" style="padding-left: 50px">
+				<h2>
+					<a id="user-content-running-selilium-test-on-mozilla-firefox"
+						href="https://github.com/infozenlab/fdademo/blob/dev/README.md#running-selilium-test-on-mozilla-firefox">
+					</a> Generating Javadoc using Maven
+				</h2>
+				<p>To install the application in your local repository execute
+					following commands:</p>
+				<div>
+					<pre>git clone https://github.com/infozenlab/fdademo.git
+cd fdademo
+mvn clean javadoc:javadoc -DskipTests=true</pre>
+					Javadoc should be in the destination folder.
+					<code>Open With &gt; Web Browser</code>
+					<code>index.html</code>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,45 +1,43 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-	<title th:text="#{view.backlog.title}">Welcome!</title>
+	<title th:text="#{view.selenium.title}">Welcome!</title>
 	<link rel="shortcut icon" href="../../../resources/images/Infozen_favicon.png" type="image/x-icon" th:href="@{/resources/images/Infozen_favicon.png}"/>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
 	<link href="../../../resources/css/usptostrap.min.css" rel="stylesheet" media="screen" th:href="@{/resources/css/usptostrap.min.css}"/>
 	<link href="../../../resources/css/main.css" rel="stylesheet" media="screen" th:href="@{/resources/css/main.css}" />
-	<link href="../../../resources/css/documents.css" rel="stylesheet" media="screen" th:href="@{/resources/css/documents.css}"/>
 	<link href="../../../resources/css/jquery-ui.min.css" rel="stylesheet" media="screen" th:href="@{/resources/css/jquery-ui.min.css}" />
+	<link href="../../../resources/css/documents.css" rel="stylesheet" media="screen" th:href="@{/resources/css/documents.css}"/>
 	<script src="../../../resources/js/jquery-1.11.1.min.js" th:src="@{/resources/js/jquery-1.11.1.min.js}"></script>
 	<script src="../../../resources/js/bootstrap.min.js" th:src="@{/resources/js/bootstrap.min.js}"></script>
 	<script src="../../../resources/js/jquery-ui.min.js" th:src="@{/resources/js/jquery-ui.min.js}"></script>
 </head>
 <body>
-<div th:replace="fragments/header :: header">&nbsp;</div>
+	<div th:replace="fragments/header :: header">&nbsp;</div>
 	<div class="pl-container">
 		<div th:replace="fragments/sideMenu :: sideMenu">&nbsp;</div>
 		<div class="pl-content">
-			<div class="pl-pattern">
-				<div class="header">
-						<p th:text="#{backlog.title}"></p>
-				</div></div>
-				<div class="row">
-					<img class="img-responsive center-block" src="../../../resources/images/backlog.jpg"
-						th:src="@{/resources/images/backlog.jpg}" alt="InfoZen Lean"
-						width="30%" height="20%" /> <br /> 
-				</div>
-				<div class="pl-pattern">
-				<div class="desc">
-					<p th:text="#{backlog.description}" align="left"></p>
+			<div class="panel" style="padding-left: 50px">
+				<h2>
+					<a id="user-content-running-selilium-test-on-mozilla-firefox"
+						href="https://github.com/infozenlab/fdademo/blob/dev/README.md#running-selilium-test-on-mozilla-firefox">
+					</a> Running Selenium Test on Mozilla Firefox
+				</h2>
+				<b>
+					<a id="user-content-pre-requisites"
+						href="https://github.com/infozenlab/fdademo/blob/dev/README.md#pre-requisites"></a>
+					Pre-requisites
+				</b>
+				<ul>
+					<li>Mozilla Firefox 37+</li>
+				</ul>
+				<div>
+					<pre>git clone https://github.com/infozenlab/fdademo.git
+cd fdademo
+mvn clean install -P integration-tests</pre>
 				</div>
 			</div>
 		</div>
 	</div>
-	<div th:replace="fragments/footer :: footer">&copy; 2015 The Static Templates</div>
-<script type="text/javascript" src="../../../resources/js/uspto-main.min.js" th:src="@{/resources/js/uspto-main.min.js}"></script> 
-<script th:inline="javascript">
-	/*<![CDATA[*/
-	           
-	/*]]>*/
-</script>
 </body>
 </html>

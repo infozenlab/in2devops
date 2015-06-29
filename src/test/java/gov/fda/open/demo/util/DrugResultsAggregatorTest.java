@@ -7,9 +7,12 @@
 package gov.fda.open.demo.util;
 
 import static org.junit.Assert.assertTrue;
+import gov.fda.open.demo.error.ApplicationException;
 import gov.fda.open.demo.model.enums.SummaryType;
 
 import java.io.File;
+import java.io.IOException;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Date;
 import java.util.Map;
@@ -17,6 +20,7 @@ import java.util.Map;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -27,16 +31,25 @@ public class DrugResultsAggregatorTest {
 
 	/** The results node. */
 	private JsonNode resultsNode;
+	
+	private static final String DATE_FORMAT = "yyyyMMdd";
+	private static final String DATE_1 = "20140401";
+	private static final String DATE_2 = "20140301";
 
 	/**
 	 * Sets the up.
+	 * @throws URISyntaxException 
+	 * @throws IOException 
+	 * @throws JsonProcessingException 
 	 *
-	 * @throws Exception the exception
+	 * @throws Exception
+	 *             the exception
 	 */
 	@Before
-	public void setUp() throws Exception {
+	public void setUp() throws ApplicationException, JsonProcessingException, IOException, URISyntaxException {
 		// Setup
-		URL fileURL = getClass().getClassLoader().getResource("DrugResultsAggregatorEventTestData.json");
+		URL fileURL = getClass().getClassLoader().getResource(
+				"DrugResultsAggregatorEventTestData.json");
 
 		ObjectMapper mapper = new ObjectMapper();
 		resultsNode = mapper.readTree(new File(fileURL.toURI())).get("results");
@@ -48,48 +61,56 @@ public class DrugResultsAggregatorTest {
 	@Test
 	public void testByPatientGender() {
 
-		DrugResultsAggregator drugResultAggregator = new DrugResultsAggregator(SummaryType.PATIENT_GENDER);
+		DrugResultsAggregator drugResultAggregator = new DrugResultsAggregator(
+				SummaryType.PATIENT_GENDER);
 		// Execute
 		drugResultAggregator.byReceivedDateFieldType(resultsNode);
 
 		// Verify
-		Map<Date, Map<String, Integer>> aggregateResults = drugResultAggregator.getResults();
-		assertTrue(aggregateResults.size() > 0);
-		Map<String, Integer> reactions = aggregateResults.get(DateUtil.toDate("yyyyMMdd", "20140401"));
-		assertTrue(reactions.size() > 0);
+		Map<Date, Map<String, Integer>> aggregateResults = drugResultAggregator
+				.getResults();
+		assertTrue(!aggregateResults.isEmpty());
+		Map<String, Integer> reactions = aggregateResults.get(DateUtil.toDate(
+				DATE_FORMAT, DATE_1));
+		assertTrue(!reactions.isEmpty());
 
-		reactions = aggregateResults.get(DateUtil.toDate("yyyyMMdd", "20140401"));
-		assertTrue(reactions.size() > 0);
+		reactions = aggregateResults.get(DateUtil
+				.toDate(DATE_FORMAT, DATE_1));
+		assertTrue(!reactions.isEmpty());
 	}
-	
+
 	/**
 	 * Test by receiver type.
 	 */
 	@Test
 	public void testByReceiverType() {
-		DrugResultsAggregator drugResultAggregator = new DrugResultsAggregator(SummaryType.RECEIVER_TYPE);
+		DrugResultsAggregator drugResultAggregator = new DrugResultsAggregator(
+				SummaryType.RECEIVER_TYPE);
 		// Execute
 		drugResultAggregator.byReceivedDateFieldType(resultsNode);
-		
+
 		// Verify
-		Map<Date, Map<String, Integer>> aggregateResults = drugResultAggregator.getResults();
-				
-		assertTrue(aggregateResults.size() > 0);
+		Map<Date, Map<String, Integer>> aggregateResults = drugResultAggregator
+				.getResults();
+
+		assertTrue(!aggregateResults.isEmpty());
 	}
-	
+
 	/**
 	 * Test by sender type.
 	 */
 	@Test
 	public void testBySenderType() {
-		DrugResultsAggregator drugResultAggregator = new DrugResultsAggregator(SummaryType.SENDER_TYPE);
+		DrugResultsAggregator drugResultAggregator = new DrugResultsAggregator(
+				SummaryType.SENDER_TYPE);
 		// Execute
 		drugResultAggregator.byReceivedDateFieldType(resultsNode);
-		
+
 		// Verify
-		Map<Date, Map<String, Integer>> aggregateResults = drugResultAggregator.getResults();
-				
-		assertTrue(aggregateResults.size() > 0);
+		Map<Date, Map<String, Integer>> aggregateResults = drugResultAggregator
+				.getResults();
+
+		assertTrue(!aggregateResults.isEmpty());
 	}
 
 	/**
@@ -97,21 +118,24 @@ public class DrugResultsAggregatorTest {
 	 */
 	@Test
 	public void testByCountry() {
-		DrugResultsAggregator drugResultAggregator = new DrugResultsAggregator(SummaryType.REPORTER_COUNTRY);
+		DrugResultsAggregator drugResultAggregator = new DrugResultsAggregator(
+				SummaryType.REPORTER_COUNTRY);
 
 		// Execute
 		drugResultAggregator.byReceivedDateFieldType(resultsNode);
 
 		// Verify
-		Map<Date, Map<String, Integer>> aggregateResults = drugResultAggregator.getResults();
-		assertTrue(aggregateResults.size() > 0);
-		Map<String, Integer> countries = aggregateResults.get(DateUtil.toDate("yyyyMMdd", "20140301"));
+		Map<Date, Map<String, Integer>> aggregateResults = drugResultAggregator
+				.getResults();
+		assertTrue(!aggregateResults.isEmpty());
+		Map<String, Integer> countries = aggregateResults.get(DateUtil.toDate(
+				DATE_FORMAT, DATE_2));
 		assertTrue(countries.size() > 0);
 
-		countries = aggregateResults.get(DateUtil.toDate("yyyyMMdd", "20140401"));
+		countries = aggregateResults.get(DateUtil
+				.toDate(DATE_FORMAT, DATE_1));
 		assertTrue(countries.size() > 0);
 
 	}
-
 
 }

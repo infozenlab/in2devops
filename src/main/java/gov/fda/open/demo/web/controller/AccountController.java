@@ -30,10 +30,7 @@ public class AccountController {
     /**
      * Accesss denied.
      *
-     * @param principal
-     *            the principal
-     * @param request
-     *            the request
+     * @param principal the principal
      * @return the string
      */
     @RequestMapping(value = "accessdenied", method = { RequestMethod.GET, RequestMethod.POST })

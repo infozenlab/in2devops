@@ -46,7 +46,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
  * Implementation class for {@link FDADataProxyService}. Class acts as facade
- * implementation for <b>Open FDA Service Drugs Adverse Events</>
+ * implementation for <b>Open FDA Service Drugs Adverse Events</b>
  * 
  * <a href="https://open.fda.gov/api/reference/">openFDA</a>
  */
@@ -84,7 +84,7 @@ public class FDADataProxyServiceImpl implements FDADataProxyService {
     /**
      * Returns all the drug names that start with give drug name in sorted order
      * 
-     * @see gov.fda.open.demo.service.IFDADataProxyService#getDrugNames(java.lang.String)
+     * @see gov.fda.open.demo.service.FDADataProxyService#getDrugNames(java.lang.String)
      */
     @Loggable(LogLevel.INFO)
     @Override
@@ -124,7 +124,7 @@ public class FDADataProxyServiceImpl implements FDADataProxyService {
      * Queries <b>openFDA</b> using RESTFul Service.
      * 
      * @see <a href="https://open.fda.gov/drug/event/">Drug Adverse Events</a>
-     * @see gov.fda.open.demo.service.IFDADataProxyService#getDrugAdverseSummary(gov.fda.open.demo.model.request.GetDrugAdverseSummaryRequest)
+     * @see gov.fda.open.demo.service.FDADataProxyService#getDrugAdverseSummary(gov.fda.open.demo.model.request.GetDrugAdverseSummaryRequest)
      */
     @Loggable(LogLevel.INFO)
     @Override

@@ -8,62 +8,11 @@
 	<link href="../../../resources/css/usptostrap.min.css" rel="stylesheet" media="screen" th:href="@{/resources/css/usptostrap.min.css}"/>
 	<link href="../../../resources/css/main.css" rel="stylesheet" media="screen" th:href="@{/resources/css/main.css}" />
 	<link href="../../../resources/css/jquery-ui.min.css" rel="stylesheet" media="screen" th:href="@{/resources/css/jquery-ui.min.css}" />
+	<link href="../../../resources/css/documents.css" rel="stylesheet" media="screen" th:href="@{/resources/css/documents.css}"/>
 	<script src="../../../resources/js/jquery-1.11.1.min.js" th:src="@{/resources/js/jquery-1.11.1.min.js}"></script>
 	<script src="../../../resources/js/bootstrap.min.js" th:src="@{/resources/js/bootstrap.min.js}"></script>
 	<script src="../../../resources/js/jquery-ui.min.js" th:src="@{/resources/js/jquery-ui.min.js}"></script>
 </head>
-<style>
-.pl-content{
-    padding-left: 20px;
-}
-path {  stroke: #fff; }
-path:hover {  opacity:0.9; }
-rect:hover {  fill:blue; }
-.axis {  font: 10px sans-serif; }
-.legend tr{    border-bottom:1px solid grey; }
-.legend tr:first-child{    border-top:1px solid grey; }
-
-.axis path,
-.axis line {
-  fill: none;
-  stroke: #000;
-  shape-rendering: crispEdges;
-}
-
-.x.axis path {  display: none; }
-.legend{
-    margin-bottom:76px;
-    display:inline-block;
-    border-collapse: collapse;
-    border-spacing: 0px;
-}
-.legend, td{
-    padding:4px 5px;
-    vertical-align:bottom;
-}
-.legendFreq, .legendPerc{
-    align:right;
-    width:50px;
-}
-.pl-pattern {
-  padding: 30px 0px 30px 30px !important;
-  text-align: center !important; 
-    float: right !important;
-}
-.desc{
-   font-family:Calibri;
-   font-size: 25px;
-   line-height: 1.2;
-   text-align: left;
-   float: right ;
-}
-.header{
-   font-family:Calibri;
-   font-size: 30px;
-   font-weight: bold;
-   text-align: center;
-}
-</style>
 <body>
 <div th:replace="fragments/header :: header">&nbsp;</div>
 	<div class="pl-container">

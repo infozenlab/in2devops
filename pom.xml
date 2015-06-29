@@ -5,7 +5,7 @@
 	<artifactId>fdademo</artifactId>
 	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Infozen Demo Project</name>
+	<name>InfoZen Demo Project</name>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>${project.build.sourceEncoding}</project.reporting.outputEncoding>
@@ -331,10 +331,6 @@
 							</configuration>
 						</execution>
 					</executions>
-					<configuration>
-						<excludePackageNames>com.infozen.idx.broker.objects</excludePackageNames>
-						<overview />
-					</configuration>
 				</plugin>
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>

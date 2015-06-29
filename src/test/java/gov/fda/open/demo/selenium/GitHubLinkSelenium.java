@@ -1,6 +1,9 @@
 package gov.fda.open.demo.selenium;
 
 import static org.junit.Assert.fail;
+import gov.fda.open.demo.error.ApplicationException;
+import gov.fda.open.demo.model.enums.LogLevel;
+import gov.fda.open.demo.service.loggable.Loggable;
 
 import java.util.concurrent.TimeUnit;
 
@@ -13,29 +16,42 @@ import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.springframework.test.context.ContextConfiguration;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class GitHubLinkSelenium {
+
+	/** The Constant LOG. */
+	private static final Logger LOG = LoggerFactory
+			.getLogger(GitHubLinkSelenium.class);
+
 	private WebDriver driver;
 	private String baseUrl;
 	private boolean acceptNextAlert = true;
 	private StringBuffer verificationErrors = new StringBuffer();
 
+	private static final String BASE_URL = "https://fda.identrix.com/";
+	private static final String CONTEXT_URL = "/fdademo/";
+	private static final String LINK_TEXT = "Source Code in GitHub!";
+
 	@Before
-	public void setUp() throws Exception {
+	@Loggable(LogLevel.INFO)
+	public void setUp() throws ApplicationException {
 		driver = new FirefoxDriver();
-		baseUrl = "https://fda.identrix.com/";
+		baseUrl = BASE_URL;
 		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
 	}
 
 	@Test
-	public void testGitHubLink() throws Exception {
-		driver.get(baseUrl + "/fdademo/");
-		driver.findElement(By.linkText("Source Code in GitHub!")).click();
+	@Loggable(LogLevel.INFO)
+	public void testGitHubLink() throws ApplicationException {
+		driver.get(baseUrl + CONTEXT_URL);
+		driver.findElement(By.linkText(LINK_TEXT)).click();
 	}
 
 	@After
-	public void tearDown() throws Exception {
+	@Loggable(LogLevel.INFO)
+	public void tearDown() throws ApplicationException {
 		driver.quit();
 		String verificationErrorString = verificationErrors.toString();
 		if (!"".equals(verificationErrorString)) {
@@ -43,27 +59,29 @@ public class GitHubLinkSelenium {
 		}
 	}
 
-	@SuppressWarnings("unused")
+	@Loggable(LogLevel.INFO)
 	private boolean isElementPresent(By by) {
 		try {
 			driver.findElement(by);
 			return true;
 		} catch (NoSuchElementException e) {
+			LOG.error("Error while isElementPresent()", e);
 			return false;
 		}
 	}
 
-	@SuppressWarnings("unused")
+	@Loggable(LogLevel.INFO)
 	private boolean isAlertPresent() {
 		try {
 			driver.switchTo().alert();
 			return true;
 		} catch (NoAlertPresentException e) {
+			LOG.error("Error while isAlertPresent()", e);
 			return false;
 		}
 	}
 
-	@SuppressWarnings("unused")
+	@Loggable(LogLevel.INFO)
 	private String closeAlertAndGetItsText() {
 		try {
 			Alert alert = driver.switchTo().alert();
