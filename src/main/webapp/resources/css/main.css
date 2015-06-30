@@ -1,4 +1,64 @@
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
+svg{
+	vertical-align: top;
+}
+.pl-content{
+        padding-left: 20px;
+}
+table{
+	vertical-align: top !important;
+	padding-top: 60px !important; 
+}
+path {  stroke: #fff; }
+path:hover {  opacity:0.9; }
+rect:hover {  fill:blue; }
+.axis {  font: 10px sans-serif; }
+.legend tr{    border-bottom:1px solid grey; }
+.legend tr:first-child{    border-top:1px solid grey; }
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.x.axis path {  display: none; }
+.legend{
+    margin-bottom:25px;
+    display:inline-block;
+    border-collapse: collapse;
+    border-spacing: 0px;
+}
+.legend, td{
+    padding:4px 5px;
+    vertical-align:bottom;
+}
+.legendFreq, .legendPerc{
+    align:right;
+    width:50px;
+}
+.drugInput{
+	height: 31px !important;
+}
+.fields {
+  padding: 30px 30px 35px 30px !important;
+  margin-bottom: -15px !important;
+}
+.directions {
+  padding: 0px 30px 10px 30px !important;
+}
+.pie{
+	padding-top: 40px !important;
+}
+.highlight {
+    font-weight: 900;
+    font-size: 105%;
+  }
+#dashboard{
+	padding-top: -50px !important;
+	margin-bottom: 0px !important;
+}
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
