@@ -76,7 +76,7 @@ Creating a new project in Eclipse
 
 * Import project URI by `Import ... > Projects from Git > Clone URI`
 * Paste https://github.com/infozenlab/fdademo.git into `URI`
-* Select `dev` branch
+* Select `master` branch
 * Confirm directory and remote name `origin`
 * Import as general project
 * Leave the default `fdademo` as project name
