@@ -23,15 +23,23 @@
 	<div th:replace="fragments/header :: header">&nbsp;</div>
 	<div class="pl-container">
 	<div th:replace="fragments/sideMenu :: sideMenu">&nbsp;</div>
-	<div class="pl-content">
+	<div class="pl-content col-md-9">
 		<div class="pl-pattern">
 			<div class="header">
 				<p th:text="#{mobile.title}"></p>
 			</div>
 			<div class="row">
-				<img class="img-responsive center-block"
+				<img class="img-responsive col-md-3 col-sm-offset-1 text-center"
 					src="../../../resources/images/mobile1.jpg"
 					th:src="@{/resources/images/mobile1.jpg}" alt="InfoZen Focus Group"
+					width="30%" height="30%" />
+				<img class="img-responsive col-md-3"
+					src="../../../resources/images/mobile1.jpg"
+					th:src="@{/resources/images/mobile2.jpg}" alt="InfoZen Focus Group"
+					width="30%" height="30%" />
+				<img class="img-responsive col-md-3"
+					src="../../../resources/images/mobile1.jpg"
+					th:src="@{/resources/images/mobile3.jpg}" alt="InfoZen Focus Group"
 					width="30%" height="30%" /><br />
 			</div></div>
 			<div class="pl-pattern">
