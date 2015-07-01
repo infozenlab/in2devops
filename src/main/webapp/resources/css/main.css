@@ -1,4 +1,7 @@
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
+.nomo{
+	pointer-events: none;
+}
 svg{
 	vertical-align: top;
 }

@@ -10,7 +10,7 @@
 			event : false
 		}
 	});
-
+	
 	var freqData = {};
 
 	$(document).ready(function() {
@@ -54,10 +54,23 @@
 				$.unblockUI();
 				var obj = msg;
 				if (obj.success) {
+					$("#warningRow").addClass("hidden");
 					freqData = jQuery.makeArray(obj.drugFrequencies);
 					dashboard('#dashboard', freqData);
 				} else {
-					alert(obj.message);
+					var om = obj.message;
+					if(om == ""){
+						om="Invalid request";
+					}
+					$("#dashboard").empty();
+					$("#dashboard-helptext").addClass("hidden");
+					$("#warningMess").text(om);
+					$("#warningRow").css('opacity', '1').css('display', '').removeClass("hidden");
+					window.setTimeout(function() {
+					    $("#warningRow").fadeTo(500, 0).slideUp(500, function(){
+					        $(this).addClass("hidden"); 
+					    });
+					}, 3000);
 				}
 			},
 			error : function(e) {
@@ -352,7 +365,8 @@
 			var tr = legend.append("tbody").selectAll("tr").data(lD).enter()
 					.append("tr").attr("id", function(d) {
 						return d.type;
-					}).attr("class", "categoryRow");
+					}).attr("class", "categoryRow")
+					.on("click", mouseover9);
 
 			// create the first column for each segment.
 			tr.append("td").append("svg").attr("width", '16').attr("height",
@@ -399,25 +413,55 @@
 				})));
 			}
 
-			function mouseover9() {
-				if ($(this).hasClass("highlight")) {
-					$(this).toggleClass("highlight");
-					$("#category").val(null);
-
-				} else {
-					var selectedId = $(this).attr("id");
-					$(".categoryRow").each(function() {
-						if ($(this).hasClass("highlight")) {
-							$(this).toggleClass("highlight");
-						}
-					});
-					$(this).toggleClass("highlight");
-					$("#category").val(selectedId);
-				}
-
+//			function mouseover9() {
+//				if ($(this).hasClass("highlight")) {
+//					$(this).toggleClass("highlight");
+//
+//				} else {
+//					var selectedId = $(this).attr("id");
+//					$(".categoryRow").each(function() {
+//						if ($(this).hasClass("highlight")) {
+//							$(this).toggleClass("highlight");
+//						}
+//					});
+//					$(this).toggleClass("highlight");
+//				}
+//
+//			}
+//
+//			return leg;
+//		}
+		
+		//new function to update the update graphics when clicking categoryRow in legend
+		function mouseover9(d){
+			if (!$(this).hasClass("highlight")) {
+				$(".categoryRow").each(function() {
+					if ($(this).hasClass("highlight")) {
+						$(this).toggleClass("highlight");
+					}
+				});
+				$(this).toggleClass("highlight");
+		    hG.update(fData.map(function(v){
+		        return [v.date,v.frequency[d.type]];}),segColor(d.type));
+		    //disable mouseover and mouseout if country is selected in legend
+		    var pieSVG = document.querySelector('.pie');
+		    pieSVG.setAttribute('class', 'nomo pie');
+		    var barsSVG = document.querySelector('.bars');
+		    barsSVG.setAttribute('class', 'nomo bars');
 			}
+			else{
+				$(this).toggleClass("highlight");
+				 hG.update(fData.map(function(v){
+		             return [v.date,v.total];}), barColor);
+				 //enable mouseover and mouseout when country is deselected in legend
+				 var mySVG = document.querySelector('.pie');
+				    mySVG.setAttribute('class', 'pie');
+				    var barsSVG = document.querySelector('.bars');
+				    barsSVG.setAttribute('class', 'bars');
+			}
+		}
 
-			return leg;
+		return leg;
 		}
 
 		// calculate total frequency by segment for all state.
@@ -450,7 +494,7 @@
 				.wrap(
 						"<div id='divThree' class='col-sm-7 col-sm-offset-1 text-center'></div>");
 		$(".pie").wrap("<div id='divFour' class='col-sm-4 text-center'></div>");
-		if (www > 12) {
+		if (www > 17) {
 			$("#dashboard-helptext").insertAfter("#rowOne");
 		}
 
