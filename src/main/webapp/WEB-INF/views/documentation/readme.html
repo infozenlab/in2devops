@@ -182,7 +182,7 @@
 				<h1>
 					<a id="user-content-750-word-brief-narrative"
 						href="https://github.com/infozenlab/fdademo/blob/dev/README.md#750-word-brief-narrative"></a>
-					750 Word Brief Narrative
+					Pool 3 Brief Narrative
 				</h1>
 				<p>InfoZen leveraged its Agile methods and DevOps principles
 					that have been honed at DHS and NASA. InfoZen's CEO assigned Jeff
@@ -213,7 +213,15 @@
 					security<b><sup>9</sup></b>. The application was deployed and tested on both private
 					cloud (VMWare) and public cloud (AWS)<b><sup>10</sup></b>, was tested inside/out with
 					automated tools/techniques,<b><sup>11</sup></b> and system performance was monitored
-					in real-time<b><sup>12</sup></b>.</p>
+					in real-time<b><sup>12</sup></b>. InfoZen’s prototype does not use any embedded database 
+					to store data. Instead, it uses FDA exposed API to retrieve and display data. If a database 
+					were to be used, then, we would have installed monitoring daemons on each data container 
+					and continuously monitored the performance, security, and availability aspects of 
+					transactions. For the prototype we used ratproxy, a program designed to sit between 
+					the Web browser and application, to log outgoing requests and responses from 
+					the application to determine how the application responds to common attacks. 
+					Furthermore, we have made Spring Insight available in our deployment in order to 
+					monitor and capture analytics from within the application itself.</p>
 				<p>The team used the Kanban method to track user stories,
 					technical features, and documentation tasks over the lifecycle.
 					They held daily stand-ups, user reviews/demos and used Lean UX
@@ -227,7 +235,12 @@
 					and JQuery. The back-end API layer was Java-based and used Spring
 					MVC, Spring Security, Thymeleaf Template engine, and SLF4J. The
 					continuous integration was based on Maven, Jenkins, JUnit, and
-					Selenium. The code was tracked on version control with Git with
+					Selenium. Jenkins is used to run a job configured to remotely execute a 
+					Vagrantfile script, using provider as LXC, to spawn a container and deploy 
+					the application. This solution as a container is hosted on VMware vSphere's 
+					private cloud, and also, another Jenkins job is configured to deploy the 
+					container on Amazon Web Services’ public cloud. The code was tracked 
+					on version control with Git with
 					libraries managed by Nexus. The target build environments were
 					CentOS hosting Tomcat built with Vagrant. The developers used the
 					Eclipse IDE. The team produced low-fidelity diagrams to seed
