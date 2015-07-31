@@ -23,9 +23,9 @@
 		<hibernatevalidator.version>5.1.3.Final</hibernatevalidator.version>
 	</properties>
 	<scm>
-		<connection>scm:git:git@iz-gitlab:ccontrol/in2devops.git</connection>
-		<url>scm:git:git@iz-gitlab:ccontrol/in2devops.git</url>
-		<developerConnection>scm:git:git@iz-gitlab:ccontrol/in2devops.git</developerConnection>
+		<connection>scm:git:git@github.com:infozenlab/in2devops.git</connection>
+		<url>scm:git:git@github.com:infozenlab/in2devops.git</url>
+		<developerConnection>scm:git:git@github.com:infozenlab/in2devops.git</developerConnection>
 		<tag>HEAD</tag>
 	</scm>
 	<distributionManagement>
@@ -345,7 +345,7 @@
 						<releaseProfiles>release</releaseProfiles>
 						<checkModificationExclude>pom.xml</checkModificationExclude>
 						<updateVersionsToSnapshot>false</updateVersionsToSnapshot>
-						<connectionUrl>scm:git:git@iz-gitlab:ccontrol/in2devops.git</connectionUrl>
+						<connectionUrl>scm:git:git@github.com:infozenlab/in2devops.git</connectionUrl>
 					</configuration>
 				</plugin>
 				<plugin>
