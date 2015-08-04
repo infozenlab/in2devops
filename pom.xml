@@ -33,13 +33,13 @@
 			<id>nexus</id>
 			<uniqueVersion>true</uniqueVersion>
 			<name>InfoZen Internal Release Repository [Nexus]</name>
-			<url>http://52.5.212.15:8081/nexus/content/repositories/releases/</url>
+			<url>http://nexus.in2devops.com/nexus/content/repositories/releases/</url>
 		</repository>
 		<snapshotRepository>
 			<id>nexus</id>
 			<uniqueVersion>false</uniqueVersion>
 			<name>InfoZen Internal Snapshot Repository [Nexus]</name>
-			<url>http://52.5.212.15:8081/nexus/content/repositories/snapshots/</url>
+			<url>http://nexus.in2devops.com/nexus/content/repositories/snapshots/</url>
 		</snapshotRepository>
 	</distributionManagement>
 	<repositories>
