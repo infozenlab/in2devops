@@ -1,25 +1,16 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<title th:text="#{view.readme.title}">Welcome!</title>
-<link rel="shortcut icon"
-	href="../../../resources/images/Infozen_favicon.png"
-	type="image/x-icon" th:href="@{/resources/images/Infozen_favicon.png}" />
-<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
-<link href="../../../resources/css/usptostrap.min.css" rel="stylesheet"
-	media="screen" th:href="@{/resources/css/usptostrap.min.css}" />
-<link href="../../../resources/css/documents.css" rel="stylesheet"
-	media="screen" th:href="@{/resources/css/documents.css}" />
-<link href="../../../resources/css/main.css" rel="stylesheet"
-	media="screen" th:href="@{/resources/css/main.css}" />
-<link href="../../../resources/css/jquery-ui.min.css" rel="stylesheet"
-	media="screen" th:href="@{/resources/css/jquery-ui.min.css}" />
-<script src="../../../resources/js/jquery-1.11.1.min.js"
-	th:src="@{/resources/js/jquery-1.11.1.min.js}"></script>
-<script src="../../../resources/js/bootstrap.min.js"
-	th:src="@{/resources/js/bootstrap.min.js}"></script>
-<script src="../../../resources/js/jquery-ui.min.js"
-	th:src="@{/resources/js/jquery-ui.min.js}"></script>
+	<title th:text="#{view.readme.title}">Welcome!</title>
+	<link rel="shortcut icon" href="../../../resources/images/Infozen_favicon.png" type="image/x-icon" th:href="@{/resources/images/Infozen_favicon.png}"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+	<link href="../../../resources/css/usptostrap.min.css" rel="stylesheet" media="screen" th:href="@{/resources/css/usptostrap.min.css}"/>
+	<link href="../../../resources/css/documents.css" rel="stylesheet" media="screen" th:href="@{/resources/css/documents.css}"/>
+	<link href="../../../resources/css/main.css" rel="stylesheet" media="screen" th:href="@{/resources/css/main.css}" />
+	<link href="../../../resources/css/jquery-ui.min.css" rel="stylesheet" media="screen" th:href="@{/resources/css/jquery-ui.min.css}" />
+	<script src="../../../resources/js/jquery-1.11.1.min.js" th:src="@{/resources/js/jquery-1.11.1.min.js}"></script>
+	<script src="../../../resources/js/bootstrap.min.js" th:src="@{/resources/js/bootstrap.min.js}"></script>
+	<script src="../../../resources/js/jquery-ui.min.js" th:src="@{/resources/js/jquery-ui.min.js}"></script>
 </head>
 <body>
 	<div th:replace="fragments/header :: header">&nbsp;</div>
@@ -27,12 +18,16 @@
 		<div th:replace="fragments/sideMenu :: sideMenu">&nbsp;</div>
 		<div class="pl-content">
 			<div class="panel" style="padding-left: 50px">
-				<b> InfoZen Prototype URL: <a href="http://fda.identrix.com/">http://fda.identrix.com/</a>
-				</b> <br /> <b> <a
-					id="user-content-infozen-github-url-httpsgithubcominfozenlabin2devops"
-					href="https://github.com/infozenlab/in2devops/blob/dev/README.md#infozen-github-url-httpsgithubcominfozenlabin2devops">
-				</a> InfoZen GitHub URL: <a
-					href="https://github.com/infozenlab/in2devops">https://github.com/infozenlab/in2devops</a>
+				<b>
+					InfoZen Prototype URL: <a href="http://fda.identrix.com/">http://fda.identrix.com/</a>
+				</b>
+				<br/>
+				<b>
+					<a
+						id="user-content-infozen-github-url-httpsgithubcominfozenlabin2devops"
+						href="https://github.com/infozenlab/in2devops/blob/dev/README.md#infozen-github-url-httpsgithubcominfozenlabin2devops">
+					</a> InfoZen GitHub URL: <a
+						href="https://github.com/infozenlab/in2devops">https://github.com/infozenlab/in2devops</a>
 				</b>
 				<h1>
 					<a
@@ -45,8 +40,7 @@
 						href="https://github.com/infozenlab/in2devops/blob/dev/README.md#summary"></a>
 					Summary
 				</h2>
-				<p>The project is a web application visualizing openFDA Data as
-					per required by GSA 18F Agile Delivery Services RFQ.</p>
+				<p>The project is a web application visualizing openFDA Data as per required by GSA 18F Agile Delivery Services RFQ.</p>
 				<h2>
 					<a id="user-content-generated-project-characteristics"
 						href="https://github.com/infozenlab/in2devops/blob/dev/README.md#generated-project-characteristics">
@@ -90,15 +84,17 @@
     cd in2devops
     mvn clean install</pre>
 				</div>
-				<b> <a id="user-content-run-the-project"
-					href="https://github.com/infozenlab/in2devops/blob/dev/README.md#run-the-project"></a>
+				<b>
+					<a id="user-content-run-the-project"
+						href="https://github.com/infozenlab/in2devops/blob/dev/README.md#run-the-project"></a>
 					Run the project
 				</b>
 				<div>
 					<pre>    mvn test tomcat7:run</pre>
 				</div>
-				<b> <a id="user-content-test-on-the-browser"
-					href="https://github.com/infozenlab/in2devops/blob/dev/README.md#test-on-the-browser"></a>
+				<b>
+					<a id="user-content-test-on-the-browser"
+						href="https://github.com/infozenlab/in2devops/blob/dev/README.md#test-on-the-browser"></a>
 					Test on the browser
 				</b>
 				<pre>
@@ -110,12 +106,13 @@
 				<div>
 					<pre>    git clone https://github.com/infozenlab/in2devops.git
     cd in2devops/target</pre>
-					<p>Copy in2devops.war file</p>
-					<pre>  cd $TOMCAT_HOME/webapps</pre>
+     <p> Copy in2devops.war file </p>
+    <pre>  cd $TOMCAT_HOME/webapps</pre>
 				</div>
 				<p>Paste in2devops.war Start tomcat server</p>
-				<b> <a id="user-content-test-on-the-browser-1"
-					href="https://github.com/infozenlab/in2devops/blob/dev/README.md#test-on-the-browser-1"></a>
+				<b>
+					<a id="user-content-test-on-the-browser-1"
+						href="https://github.com/infozenlab/in2devops/blob/dev/README.md#test-on-the-browser-1"></a>
 					Test on the browser
 				</b>
 				<pre>
@@ -132,8 +129,7 @@
 					<li>Import project URI by <code>Import ... &gt;
 							Projects from Git &gt; Clone URI</code>
 					</li>
-					<li>Paste <a
-						href="https://github.com/infozenlab/in2devops.git">https://github.com/infozenlab/in2devops.git</a>
+					<li>Paste <a href="https://github.com/infozenlab/in2devops.git">https://github.com/infozenlab/in2devops.git</a>
 						into <code>URI</code>
 					</li>
 					<li>Select <code>master</code> branch
@@ -156,8 +152,9 @@
 							Server</code> follow wizard till server is up and running
 					</li>
 				</ul>
-				<b> <a id="user-content-test-on-the-browser-2"
-					href="https://github.com/infozenlab/in2devops/blob/dev/README.md#test-on-the-browser-2"></a>
+				<b>
+					<a id="user-content-test-on-the-browser-2"
+						href="https://github.com/infozenlab/in2devops/blob/dev/README.md#test-on-the-browser-2"></a>
 					Test on the browser
 				</b>
 				<pre>
@@ -170,8 +167,9 @@
 						href="https://github.com/infozenlab/in2devops/blob/dev/README.md#running-selilium-test-on-mozilla-firefox">
 					</a> Running Selenium Test on Mozilla Firefox
 				</h2>
-				<b> <a id="user-content-pre-requisites"
-					href="https://github.com/infozenlab/in2devops/blob/dev/README.md#pre-requisites"></a>
+				<b>
+					<a id="user-content-pre-requisites"
+						href="https://github.com/infozenlab/in2devops/blob/dev/README.md#pre-requisites"></a>
 					Pre-requisites
 				</b>
 				<ul>
@@ -183,5 +181,6 @@
 				</div>
 			</div>
 		</div>
+	</div>
 </body>
 </html>
